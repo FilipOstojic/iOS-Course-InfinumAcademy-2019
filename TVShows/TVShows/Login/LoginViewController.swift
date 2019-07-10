@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
     @IBAction func buttonClicked(_ sender:UIButton){
         counter += 1
         counterLabel.text = String(counter)
+        shake()
         changeColor()
     }
     
@@ -58,7 +59,6 @@ class LoginViewController: UIViewController {
         } else {
             counterLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
-        
     }
     
     func isColorLight(red:Int, green:Int, blue: Int) -> Bool {
@@ -67,6 +67,24 @@ class LoginViewController: UIViewController {
     
     func randomCGFloat() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX)
+    }
+    
+    func shake() {
+        let shake = CABasicAnimation(keyPath: "position")
+        shake.duration = 0.1
+        shake.repeatCount = 2
+        shake.autoreverses = true
+        
+        let fromPoint = CGPoint(x: clickButton.center.x - 5, y: clickButton.center.y)
+        let fromValue = NSValue(cgPoint: fromPoint)
+        
+        let toPoint = CGPoint(x: clickButton.center.x + 5, y: clickButton.center.y)
+        let toValue = NSValue(cgPoint: toPoint)
+        
+        shake.fromValue = fromValue
+        shake.toValue = toValue
+        
+        clickButton.layer.add(shake, forKey: "position")
     }
     
 }
