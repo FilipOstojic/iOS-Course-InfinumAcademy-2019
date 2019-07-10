@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UUZ-Kk-59o">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="yC8-Pu-Jmh">
+            <objects>
+                <viewController id="UUZ-Kk-59o" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rbv-R6-lGW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60b-AX-QeW">
+                                <rect key="frame" x="157" y="323" width="100" height="70"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="LEe-kr-BOh"/>
+                                    <constraint firstAttribute="width" constant="100" id="fzv-kW-BsE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP0-C5-yfM">
+                                <rect key="frame" x="132" y="423" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="h5N-A8-Vhi"/>
+                                    <constraint firstAttribute="height" constant="50" id="n4r-u1-7KY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="CLICK">
+                                    <color key="titleColor" red="0.31860837937531583" green="0.3908629667781538" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="UUZ-Kk-59o" eventType="touchUpInside" id="2Bt-RB-Ymk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FP0-C5-yfM" firstAttribute="top" secondItem="60b-AX-QeW" secondAttribute="bottom" constant="30" id="2V7-bO-suh"/>
+                            <constraint firstItem="60b-AX-QeW" firstAttribute="centerX" secondItem="rbv-R6-lGW" secondAttribute="centerX" id="4c4-Jb-uY1"/>
+                            <constraint firstItem="FP0-C5-yfM" firstAttribute="centerX" secondItem="rbv-R6-lGW" secondAttribute="centerX" id="PLd-m6-FCS"/>
+                            <constraint firstItem="FP0-C5-yfM" firstAttribute="centerY" secondItem="rbv-R6-lGW" secondAttribute="centerY" id="nUh-od-uhl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wEa-aW-EC4"/>
+                    </view>
+                    <connections>
+                        <outlet property="clickButton" destination="FP0-C5-yfM" id="7be-NK-Tdg"/>
+                        <outlet property="counterLabel" destination="60b-AX-QeW" id="oGT-fO-kNn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uTw-FS-HC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124.6376811594203" y="162.72321428571428"/>
+        </scene>
+    </scenes>
+</document>
