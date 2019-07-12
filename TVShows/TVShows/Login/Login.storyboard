@@ -29,16 +29,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP0-C5-yfM">
-                                <rect key="frame" x="132" y="423" width="150" height="50"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP0-C5-yfM">
+                                <rect key="frame" x="159.5" y="423" width="95" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="h5N-A8-Vhi"/>
                                     <constraint firstAttribute="height" constant="50" id="n4r-u1-7KY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="CLICK">
-                                    <color key="titleColor" red="0.31860837937531583" green="0.3908629667781538" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-12" maxY="0.0"/>
+                                <state key="normal" title="CLICK" image="256">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonClicked:" destination="UUZ-Kk-59o" eventType="touchUpInside" id="2Bt-RB-Ymk"/>
@@ -64,4 +63,7 @@
             <point key="canvasLocation" x="124.6376811594203" y="162.72321428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="256" width="24" height="24"/>
+    </resources>
 </document>

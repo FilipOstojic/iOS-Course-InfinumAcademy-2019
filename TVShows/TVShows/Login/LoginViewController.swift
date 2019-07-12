@@ -29,12 +29,6 @@ class LoginViewController: UIViewController {
         clickButton.layer.borderColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1)
         clickButton.layer.borderWidth = 2
         clickButton.layer.cornerRadius = 15
-        
-        clickButton.setImage(UIImage(named: "256.png"), for: .normal)
-        clickButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
-        
-        //clickButton.titleLabel?.text = "CLICK"
-        clickButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
     }
     
     @IBAction func buttonClicked(_ sender:UIButton){
