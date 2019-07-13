@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
-    var counter = 0
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var clickButton: UIButton!
+    private var counter = 0;
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var clickButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,49 +21,43 @@ class LoginViewController: UIViewController {
         initButton()
     }
     
-    func initLabel() -> Void {
+    private func initLabel() -> Void {
         counterLabel.text = String(counter)
     }
     
-    func initButton() -> Void {
+    private func initButton() -> Void {
         clickButton.layer.borderColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1)
         clickButton.layer.borderWidth = 2
         clickButton.layer.cornerRadius = 15
     }
     
-    @IBAction func buttonClicked(_ sender:UIButton){
+    @IBAction private func buttonClicked(_ sender:UIButton){
         counter += 1
         counterLabel.text = String(counter)
         shake()
         changeColor()
     }
     
-    func changeColor() -> Void {
-        let redFloat = randomCGFloat()
-        let greenFloat = randomCGFloat()
-        let blueFloat = randomCGFloat()
+    private func changeColor() -> Void {
+        let redFloat = CGFloat.random(in: 0 ... 1)
+        let greenFloat = CGFloat.random(in: 0 ... 1)
+        let blueFloat = CGFloat.random(in: 0 ... 1)
         
-        counterLabel.backgroundColor = UIColor(red: redFloat,
-                                               green: greenFloat,
-                                               blue: blueFloat,
-                                               alpha: 1.0)
+        counterLabel.backgroundColor = UIColor(
+            red: redFloat,
+            green: greenFloat,
+            blue: blueFloat,
+            alpha: 1.0
+        )
         
-        if isColorLight(red: Int(redFloat*255), green: Int(greenFloat*255), blue: Int(blueFloat*255)) {
+        if (counterLabel.backgroundColor?.isLight())! {
             counterLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         } else {
-            counterLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            counterLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }
     
-    func isColorLight(red:Int, green:Int, blue: Int) -> Bool {
-        return ((red * 299) + (green * 587) + (blue * 114)) / 1000 >= 128
-    }
-    
-    func randomCGFloat() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UINT32_MAX)
-    }
-    
-    func shake() {
+    private func shake() {
         let shake = CABasicAnimation(keyPath: "position")
         shake.duration = 0.1
         shake.repeatCount = 2
@@ -82,3 +76,19 @@ class LoginViewController: UIViewController {
     }
     
 }
+
+extension UIColor {
+    
+    func isLight() -> Bool {
+        guard
+            let components = cgColor.components
+            else {
+                return false
+        }
+        
+        let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        return brightness > 0.5
+    }
+    
+}
+
