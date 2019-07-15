@@ -11,7 +11,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    // MARK: outlets
+    // MARK: - outlets
     
     @IBOutlet private weak var checkBtn: UIButton!
     @IBOutlet private weak var loginBtn: UIButton!
@@ -19,19 +19,20 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    // MARK: properties
+    // MARK: - properties
     
     private var checked = false
     
-    // MARK: lifecycle functions
+    // MARK: - lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCursorColor()
     }
     
-    // MARK: actions
+    // MARK: - actions
     
-    @IBAction func checkChange(_ sender: UIButton) {
+    @IBAction private func checkChange(_ sender: UIButton) {
         
         if !checked {
             sender.setImage(UIImage(named: "ic-checkbox-filled"), for: .normal)
@@ -40,6 +41,13 @@ final class LoginViewController: UIViewController {
         }
         
         checked = checked ? false : true;
+    }
+    
+    // MARK: - private methods
+    
+    private func setCursorColor() -> Void {
+        usernameTextField.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
+        passwordTextField.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
     }
     
 }
