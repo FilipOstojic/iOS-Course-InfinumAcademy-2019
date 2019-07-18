@@ -38,7 +38,7 @@ final class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 }
@@ -105,13 +105,13 @@ private extension LoginViewController {
         let password:String = passwordTextField.text ?? ""
         
         if email.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "" {
-            self.errorMessage(message: "Fields should not be empty.")
+            errorMessage(message: "Fields should not be empty.")
             setLineColor(color: .red)
             return true
         }
         
         if password.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "" {
-            self.errorMessage(message: "Fields should not be empty.")
+            errorMessage(message: "Fields should not be empty.")
             setLineColor(color: .red)
             return true
         }
@@ -119,17 +119,23 @@ private extension LoginViewController {
     }
     
     func errorMessage(message: String) -> Void {
-        self.errorLabel.text = message
+        errorLabel.text = message
     }
     
     func resetErrorLabel() -> Void {
-        self.errorLabel.text = ""
+        errorLabel.text = ""
         setLineColor(color: .darkGray)
     }
     
     func setLineColor(color: UIColor) {
-        self.usernameLine.backgroundColor = color
-        self.passwordLine.backgroundColor = color
+        usernameLine.backgroundColor = color
+        passwordLine.backgroundColor = color
+    }
+    
+    func navigateToHome() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(homeViewController, animated: true)
     }
 }
 
@@ -174,6 +180,7 @@ private extension LoginViewController {
             "email": email,
             "password": password
         ]
+        loginBtn.isEnabled = false
         Alamofire
             .request(
                 "https://api.infinum.academy/api/users/sessions",
@@ -185,16 +192,12 @@ private extension LoginViewController {
                 switch response.result {
                 case .success( _):
                     SVProgressHUD.showSuccess(withStatus: "Success")
-                    
-                    // navigate
-                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-                    self.navigationController?.pushViewController(vc, animated: true)
-                    
+                    self.navigateToHome()
                 case .failure( _):
                     self.errorMessage(message: "Wrong username and/or password.")
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
+                self.loginBtn.isEnabled = true
         }
     }
 
