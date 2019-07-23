@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27BB4C0BBC1F61AF96BFCF84 /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272A2F8ADE36ED0114916CBB /* Pods_TVShows.framework */; };
+		506D407122E7967300B199E3 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D407022E7967300B199E3 /* Show.swift */; };
 		508C961C22D5341500355D6F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508C961B22D5341500355D6F /* Login.storyboard */; };
 		508C962222D5354400355D6F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C962122D5354400355D6F /* LoginViewController.swift */; };
 		509F93AE22CE540E0090D93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509F93AD22CE540E0090D93D /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		272A2F8ADE36ED0114916CBB /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506D407022E7967300B199E3 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		508C961B22D5341500355D6F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		508C962122D5354400355D6F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		509F93AA22CE540E0090D93D /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 			children = (
 				50B0277D22DE6EEB00D27DB0 /* HomeViewController.swift */,
 				50C1DA4222DF28AB005F2F45 /* Home.storyboard */,
+				506D407022E7967300B199E3 /* Show.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				50B0278022DE750400D27DB0 /* User.swift in Sources */,
 				508C962222D5354400355D6F /* LoginViewController.swift in Sources */,
 				509F93AE22CE540E0090D93D /* AppDelegate.swift in Sources */,
+				506D407122E7967300B199E3 /* Show.swift in Sources */,
 				50B0277E22DE6EEB00D27DB0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

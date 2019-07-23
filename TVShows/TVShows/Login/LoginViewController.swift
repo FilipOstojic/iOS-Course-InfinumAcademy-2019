@@ -112,7 +112,7 @@ private extension LoginViewController {
     func navigateToHome() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        homeViewController.loginUser = loginUser?.token
+        homeViewController.token = loginUser!.token
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
