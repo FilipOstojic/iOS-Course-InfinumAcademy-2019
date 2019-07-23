@@ -123,6 +123,7 @@ private extension LoginViewController {
 private extension LoginViewController {
     
     func registerUserWith(email: String, password: String) {
+        loginButton.isEnabled = false
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
