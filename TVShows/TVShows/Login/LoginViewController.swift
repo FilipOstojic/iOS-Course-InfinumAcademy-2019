@@ -23,6 +23,10 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var usernameLine: UIView!
     @IBOutlet weak var passwordLine: UIView!
     
+    // MARK: - properties
+    
+    private var loginUser: LoginData?
+    
     // MARK: - lifecycle functions
     
     override func viewDidLoad() {
@@ -51,7 +55,7 @@ private extension LoginViewController {
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Registration error",  message: "Please enter username and password")
+            showAlert(title: "Registration error",  message: "\nPlease enter username and password")
             return
         }
         
@@ -64,7 +68,7 @@ private extension LoginViewController {
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Registration error",  message: "Please enter username and password")
+            showAlert(title: "Login error",  message: "\nPlease enter username and password")
             return
         }
         
@@ -108,6 +112,7 @@ private extension LoginViewController {
     func navigateToHome() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        homeViewController.loginUser = loginUser?.token
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
@@ -173,8 +178,9 @@ private extension LoginViewController {
             .validate()
             .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<LoginData>) in
                 switch response.result {
-                case .success( _):
+                case .success(let loginToken):
                     SVProgressHUD.showSuccess(withStatus: "Success")
+                    self?.loginUser = loginToken
                     self?.navigateToHome()
                 case .failure( _):
                     self?.setLineColor(color: .red)
