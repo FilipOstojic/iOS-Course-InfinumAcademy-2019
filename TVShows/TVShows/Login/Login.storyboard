@@ -95,6 +95,7 @@
                                                                             <constraint firstAttribute="width" constant="40" id="5xM-kj-Wre"/>
                                                                         </constraints>
                                                                         <state key="normal" image="ic-checkbox-empty"/>
+                                                                        <state key="selected" image="ic-checkbox-filled"/>
                                                                         <connections>
                                                                             <action selector="checkChange:" destination="UUZ-Kk-59o" eventType="touchUpInside" id="B6L-JU-LPC"/>
                                                                         </connections>
@@ -118,7 +119,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xzz-Q0-GBC" userLabel="Login or Register Stack View">
                                                         <rect key="frame" x="0.0" y="236.33333333333337" width="375" height="160.33333333333337"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgY-JV-oJp">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgY-JV-oJp" userLabel="Login Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                                 <color key="backgroundColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -194,12 +195,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="bMW-Do-gu8"/>
                     <connections>
-                        <outlet property="checkBtn" destination="U1p-nj-LfS" id="bAt-hc-nbW"/>
-                        <outlet property="errorLabel" destination="YQr-bV-EXD" id="gXM-9v-sY0"/>
-                        <outlet property="loginBtn" destination="OgY-JV-oJp" id="fVk-eo-BfK"/>
+                        <outlet property="checkButton" destination="U1p-nj-LfS" id="AOq-tp-0MW"/>
+                        <outlet property="loginButton" destination="OgY-JV-oJp" id="4ZO-6Y-9gA"/>
                         <outlet property="passwordLine" destination="b6l-Qh-QUV" id="rrE-3b-c56"/>
                         <outlet property="passwordTextField" destination="RXG-9s-uwE" id="Lwh-Y8-6Wm"/>
-                        <outlet property="registerBtn" destination="YA2-2y-jZo" id="2cy-4w-zeP"/>
+                        <outlet property="registerButton" destination="YA2-2y-jZo" id="TyO-o4-qj5"/>
                         <outlet property="usernameLine" destination="OGd-QJ-vwW" id="Axa-Dy-7Nw"/>
                         <outlet property="usernameTextField" destination="cH1-9J-6Cz" id="eTw-oO-y7L"/>
                     </connections>
@@ -229,6 +229,7 @@
     </scenes>
     <resources>
         <image name="ic-checkbox-empty" width="24" height="24"/>
+        <image name="ic-checkbox-filled" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>

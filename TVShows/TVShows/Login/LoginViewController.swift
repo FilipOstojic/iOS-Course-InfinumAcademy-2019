@@ -15,30 +15,24 @@ final class LoginViewController: UIViewController {
     
     // MARK: - outlets
     
-    @IBOutlet private weak var checkBtn: UIButton!
-    @IBOutlet private weak var loginBtn: UIButton!
-    @IBOutlet private weak var registerBtn: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var usernameLine: UIView!
     @IBOutlet weak var passwordLine: UIView!
-    
-    // MARK: - properties
-    
-    private var checked = false
     
     // MARK: - lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCursorColor()
-        resetErrorLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 }
@@ -48,38 +42,33 @@ final class LoginViewController: UIViewController {
 private extension LoginViewController {
     
     @IBAction private func checkChange(_ sender: UIButton) {
-        if !checked {
-            sender.setImage(UIImage(named: "ic-checkbox-filled"), for: .normal)
-        } else {
-            sender.setImage(UIImage(named: "ic-checkbox-empty"), for: .normal)
-        }
-        checked.toggle()
+        checkButton.isSelected.toggle()
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-        if inputsAreEmpty() {
+        guard
+            let username = usernameTextField.text,
+            let password = passwordTextField.text,
+            !inputsAreEmpty()
+        else {
+            showAlert(title: "Registration error",  message: "Please enter username and password")
             return
         }
         
-        guard let email = usernameTextField.text, let password = passwordTextField.text else {
-            self.errorMessage(message: "Username or password type fail.")
-            return
-        }
-        
-        registerUserWith(email: email, password: password)
+        registerUserWith(email: username, password: password)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        if inputsAreEmpty() {
+        guard
+            let username = usernameTextField.text,
+            let password = passwordTextField.text,
+            !inputsAreEmpty()
+        else {
+            showAlert(title: "Registration error",  message: "Please enter username and password")
             return
         }
         
-        guard let email = usernameTextField.text, let password = passwordTextField.text else {
-            self.errorMessage(message: "Username or password type fail.")
-            return
-        }
-        
-        loginUserWith(email: email, password: password)
+        loginUserWith(email: username, password: password)
     }
     
     @IBAction func usernameValueChanged(_ sender: UITextField) {
@@ -101,30 +90,14 @@ private extension LoginViewController {
     }
     
     func inputsAreEmpty() -> Bool {
-        let email:String = usernameTextField.text ?? ""
-        let password:String = passwordTextField.text ?? ""
+        let email = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
         
-        if email.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "" {
-            errorMessage(message: "Fields should not be empty.")
-            setLineColor(color: .red)
-            return true
-        }
-        
-        if password.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) == "" {
-            errorMessage(message: "Fields should not be empty.")
+        if email.isEmpty || password.isEmpty {
             setLineColor(color: .red)
             return true
         }
         return false
-    }
-    
-    func errorMessage(message: String) -> Void {
-        errorLabel.text = message
-    }
-    
-    func resetErrorLabel() -> Void {
-        errorLabel.text = ""
-        setLineColor(color: .darkGray)
     }
     
     func setLineColor(color: UIColor) {
@@ -136,6 +109,12 @@ private extension LoginViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
 }
 
@@ -158,13 +137,14 @@ private extension LoginViewController {
                 parameters: parameters,
                 encoding: JSONEncoding.default)
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<User>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<User>) in
+                
                 switch response.result {
                 case .success( _):
-                    self.loginUserWith(email: email, password: password)
+                    self?.loginUserWith(email: email, password: password)
                 case .failure( _):
+                    self?.setLineColor(color: .red)
                     SVProgressHUD.showError(withStatus: "Failure")
-                    self.errorMessage(message: "Can not reach server.")
                 }
         }
     }
@@ -175,12 +155,14 @@ private extension LoginViewController {
 private extension LoginViewController {
 
     func loginUserWith(email: String, password: String) {
+        loginButton.isEnabled = false
         SVProgressHUD.show()
+        
         let parameters: [String: String] = [
             "email": email,
             "password": password
         ]
-        loginBtn.isEnabled = false
+        
         Alamofire
             .request(
                 "https://api.infinum.academy/api/users/sessions",
@@ -188,16 +170,16 @@ private extension LoginViewController {
                 parameters: parameters,
                 encoding: JSONEncoding.default)
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<LoginData>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<LoginData>) in
                 switch response.result {
                 case .success( _):
                     SVProgressHUD.showSuccess(withStatus: "Success")
-                    self.navigateToHome()
+                    self?.navigateToHome()
                 case .failure( _):
-                    self.errorMessage(message: "Wrong username and/or password.")
+                    self?.setLineColor(color: .red)
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
-                self.loginBtn.isEnabled = true
+                self?.loginButton.isEnabled = true
         }
     }
 
