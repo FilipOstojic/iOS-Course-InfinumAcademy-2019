@@ -6,89 +6,181 @@
 //  Copyright © 2019 Infinum Infinum. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import SVProgressHUD
+import Alamofire
+import CodableAlamofire
 
 final class LoginViewController: UIViewController {
     
-    private var counter = 0;
-    @IBOutlet private weak var counterLabel: UILabel!
-    @IBOutlet private weak var clickButton: UIButton!
+    // MARK: - outlets
+    
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameLine: UIView!
+    @IBOutlet weak var passwordLine: UIView!
+    
+    // MARK: - lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initLabel()
-        initButton()
+        setCursorColor()
     }
     
-    private func initLabel() -> Void {
-        counterLabel.text = String(counter)
-    }
-    
-    private func initButton() -> Void {
-        clickButton.layer.borderColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1)
-        clickButton.layer.borderWidth = 2
-        clickButton.layer.cornerRadius = 15
-    }
-    
-    @IBAction private func buttonClicked(_ sender:UIButton){
-        counter += 1
-        counterLabel.text = String(counter)
-        shake()
-        changeColor()
-    }
-    
-    private func changeColor() -> Void {
-        let redFloat = CGFloat.random(in: 0 ... 1)
-        let greenFloat = CGFloat.random(in: 0 ... 1)
-        let blueFloat = CGFloat.random(in: 0 ... 1)
-        
-        counterLabel.backgroundColor = UIColor(
-            red: redFloat,
-            green: greenFloat,
-            blue: blueFloat,
-            alpha: 1.0
-        )
-        
-        if (counterLabel.backgroundColor?.isLight())! {
-            counterLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        } else {
-            counterLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
-    }
-    
-    private func shake() {
-        let shake = CABasicAnimation(keyPath: "position")
-        shake.duration = 0.1
-        shake.repeatCount = 2
-        shake.autoreverses = true
-        
-        let fromPoint = CGPoint(x: clickButton.center.x - 5, y: clickButton.center.y)
-        let fromValue = NSValue(cgPoint: fromPoint)
-        
-        let toPoint = CGPoint(x: clickButton.center.x + 5, y: clickButton.center.y)
-        let toValue = NSValue(cgPoint: toPoint)
-        
-        shake.fromValue = fromValue
-        shake.toValue = toValue
-        
-        clickButton.layer.add(shake, forKey: "position")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 }
 
-extension UIColor {
+// MARK: - IBActions
+
+private extension LoginViewController {
     
-    func isLight() -> Bool {
+    @IBAction private func checkChange(_ sender: UIButton) {
+        checkButton.isSelected.toggle()
+    }
+    
+    @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard
-            let components = cgColor.components
-            else {
-                return false
+            let username = usernameTextField.text,
+            let password = passwordTextField.text,
+            !inputsAreEmpty()
+        else {
+            showAlert(title: "Registration error",  message: "Please enter username and password")
+            return
         }
         
-        let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
-        return brightness > 0.5
+        registerUserWith(email: username, password: password)
     }
     
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        guard
+            let username = usernameTextField.text,
+            let password = passwordTextField.text,
+            !inputsAreEmpty()
+        else {
+            showAlert(title: "Registration error",  message: "Please enter username and password")
+            return
+        }
+        
+        loginUserWith(email: username, password: password)
+    }
+    
+    @IBAction func usernameValueChanged(_ sender: UITextField) {
+        setLineColor(color: .darkGray)
+    }
+    
+    @IBAction func passwordValueChanged(_ sender: UITextField) {
+        setLineColor(color: .darkGray)
+    }
 }
 
+// MARK: - private methods
+
+private extension LoginViewController {
+    
+    func setCursorColor() -> Void {
+        usernameTextField.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
+        passwordTextField.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
+    }
+    
+    func inputsAreEmpty() -> Bool {
+        let email = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        if email.isEmpty || password.isEmpty {
+            setLineColor(color: .red)
+            return true
+        }
+        return false
+    }
+    
+    func setLineColor(color: UIColor) {
+        usernameLine.backgroundColor = color
+        passwordLine.backgroundColor = color
+    }
+    
+    func navigateToHome() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+}
+
+// MARK: - Register + automatic JSON parsing
+
+private extension LoginViewController {
+    
+    func registerUserWith(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<User>) in
+                
+                switch response.result {
+                case .success( _):
+                    self?.loginUserWith(email: email, password: password)
+                case .failure( _):
+                    self?.setLineColor(color: .red)
+                    SVProgressHUD.showError(withStatus: "Failure")
+                }
+        }
+    }
+}
+
+// MARK: - Login + automatic JSON parsing
+
+private extension LoginViewController {
+
+    func loginUserWith(email: String, password: String) {
+        loginButton.isEnabled = false
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users/sessions",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<LoginData>) in
+                switch response.result {
+                case .success( _):
+                    SVProgressHUD.showSuccess(withStatus: "Success")
+                    self?.navigateToHome()
+                case .failure( _):
+                    self?.setLineColor(color: .red)
+                    SVProgressHUD.showError(withStatus: "Failure")
+                }
+                self?.loginButton.isEnabled = true
+        }
+    }
+
+}
