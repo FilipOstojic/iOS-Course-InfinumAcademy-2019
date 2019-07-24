@@ -50,6 +50,7 @@ private extension LoginViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
+        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
@@ -60,9 +61,11 @@ private extension LoginViewController {
         }
         
         registerUserWith(email: username, password: password)
+        loginButton.isEnabled = true
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
+        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
@@ -73,6 +76,7 @@ private extension LoginViewController {
         }
         
         loginUserWith(email: username, password: password)
+        loginButton.isEnabled = true
     }
     
     @IBAction func usernameValueChanged(_ sender: UITextField) {
@@ -113,6 +117,7 @@ private extension LoginViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         homeViewController.token = loginUser!.token
+        homeViewController.getShows()
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
@@ -128,7 +133,6 @@ private extension LoginViewController {
 private extension LoginViewController {
     
     func registerUserWith(email: String, password: String) {
-        loginButton.isEnabled = false
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -161,7 +165,6 @@ private extension LoginViewController {
 private extension LoginViewController {
 
     func loginUserWith(email: String, password: String) {
-        loginButton.isEnabled = false
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -186,7 +189,6 @@ private extension LoginViewController {
                     self?.setLineColor(color: .red)
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
-                self?.loginButton.isEnabled = true
         }
     }
 

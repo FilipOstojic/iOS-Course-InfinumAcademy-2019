@@ -17,6 +17,7 @@
 		50B0277E22DE6EEB00D27DB0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0277D22DE6EEB00D27DB0 /* HomeViewController.swift */; };
 		50B0278022DE750400D27DB0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0277F22DE750400D27DB0 /* User.swift */; };
 		50C1DA4322DF28AB005F2F45 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C1DA4222DF28AB005F2F45 /* Home.storyboard */; };
+		50DE2A4022E7BCA900EEE8FE /* TVShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DE2A3F22E7BCA900EEE8FE /* TVShowTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		50B0277D22DE6EEB00D27DB0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		50B0277F22DE750400D27DB0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50C1DA4222DF28AB005F2F45 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		50DE2A3F22E7BCA900EEE8FE /* TVShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewCell.swift; sourceTree = "<group>"; };
 		7BD6AD592EA0DF063F112A92 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
 		C818C7D5136F222479CF2235 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,8 +102,9 @@
 		50B0277022DE636400D27DB0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				50B0277D22DE6EEB00D27DB0 /* HomeViewController.swift */,
 				50C1DA4222DF28AB005F2F45 /* Home.storyboard */,
+				50B0277D22DE6EEB00D27DB0 /* HomeViewController.swift */,
+				50DE2A3F22E7BCA900EEE8FE /* TVShowTableViewCell.swift */,
 				506D407022E7967300B199E3 /* Show.swift */,
 			);
 			path = Home;
@@ -236,6 +239,7 @@
 				508C962222D5354400355D6F /* LoginViewController.swift in Sources */,
 				509F93AE22CE540E0090D93D /* AppDelegate.swift in Sources */,
 				506D407122E7967300B199E3 /* Show.swift in Sources */,
+				50DE2A4022E7BCA900EEE8FE /* TVShowTableViewCell.swift in Sources */,
 				50B0277E22DE6EEB00D27DB0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

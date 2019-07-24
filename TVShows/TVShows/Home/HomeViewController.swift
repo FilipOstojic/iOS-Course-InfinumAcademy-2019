@@ -10,29 +10,20 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     var token: String = ""
-    private var shows: [Show] = []
+    var shows: [Show] = []
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getShows()
+        setupTableView()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-private extension HomeViewController {
+extension HomeViewController {
     
     func getShows() {
         SVProgressHUD.show()
@@ -52,8 +43,48 @@ private extension HomeViewController {
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
-        
             }
-    
     }
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableView.automaticDimension
+        
+//        tableView.tableFooterView = UIView()
+
+        
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = shows[indexPath.row]
+        print("Selected Item: \(item)")
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shows.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TVShowTableViewCell.self), for: indexPath) as! TVShowTableViewCell
+
+        cell.configure(with: shows[indexPath.row])
+        
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        tableView.endUpdates()
+        
+        return cell
+    }
+
+
 }
