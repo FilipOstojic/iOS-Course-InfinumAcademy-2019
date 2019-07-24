@@ -12,10 +12,16 @@ import SVProgressHUD
 
 final class HomeViewController: UIViewController {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
+    
     var token: String = ""
     var shows: [Show] = []
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - LifeCycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,9 @@ final class HomeViewController: UIViewController {
         setupTableView()
     }
 }
+
+
+// MARK: API call to get all TVShows
 
 extension HomeViewController {
     
@@ -57,6 +66,9 @@ extension HomeViewController {
     }
 }
 
+
+// MARK: - Delegate
+
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,6 +77,8 @@ extension HomeViewController: UITableViewDelegate {
         print("Selected Item: \(item)")
     }
 }
+
+// MARK: - DataSource
 
 extension HomeViewController: UITableViewDataSource {
 

@@ -10,30 +10,33 @@ import UIKit
 
 class TVShowTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - LifeCycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = nil
-        //resetirat ostalo
+        //resetirat ostalo kasnije
     }
 
 }
 
 extension TVShowTableViewCell {
+    
     func configure(with item: Show) {
         titleLabel.text = item.title
-        //ostalo pridružit kasnije isto ovdje
+        //ostalo pridružit kasnije
     }
+    
 }

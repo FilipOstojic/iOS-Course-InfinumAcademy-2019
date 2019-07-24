@@ -29,17 +29,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vky-g5-xVg">
-                                                    <rect key="frame" x="10" y="10" width="394" height="54.5"/>
+                                                <stackView opaque="NO" contentMode="scaleAspectFit" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vky-g5-xVg">
+                                                    <rect key="frame" x="15" y="10" width="389" height="54.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JMd-aB-VBD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="54.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="54.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="80" id="aiS-zW-NO9"/>
+                                                                <constraint firstAttribute="width" constant="40" id="aiS-zW-NO9" userLabel="width = 60"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-0T-AEU" userLabel="Title Label">
-                                                            <rect key="frame" x="90" y="0.0" width="304" height="54.5"/>
+                                                            <rect key="frame" x="55" y="0.0" width="334" height="54.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vky-g5-xVg" firstAttribute="leading" secondItem="dzx-8s-zge" secondAttribute="leading" constant="10" id="DY5-lc-FGv"/>
+                                                <constraint firstItem="vky-g5-xVg" firstAttribute="leading" secondItem="dzx-8s-zge" secondAttribute="leading" constant="15" id="DY5-lc-FGv"/>
                                                 <constraint firstAttribute="bottom" secondItem="vky-g5-xVg" secondAttribute="bottom" constant="10" id="YRr-IV-gtX"/>
                                                 <constraint firstAttribute="trailing" secondItem="vky-g5-xVg" secondAttribute="trailing" constant="10" id="jMA-Hj-2fr"/>
                                                 <constraint firstItem="vky-g5-xVg" firstAttribute="top" secondItem="dzx-8s-zge" secondAttribute="top" constant="10" id="nyC-OH-AvD"/>
