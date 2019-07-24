@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getShows()
         setupTableView()
     }
 }
@@ -40,6 +41,7 @@ extension HomeViewController {
                 case .success(let showsResponse):
                     SVProgressHUD.dismiss()
                     self?.shows = showsResponse
+                    self?.tableView.reloadData()
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
@@ -51,10 +53,7 @@ extension HomeViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
-        
-//        tableView.tableFooterView = UIView()
-
-        
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -79,12 +78,15 @@ extension HomeViewController: UITableViewDataSource {
 
         cell.configure(with: shows[indexPath.row])
         
-        tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-        tableView.endUpdates()
-        
         return cell
     }
-
-
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+            self?.shows.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        
+        return [delete]
+    }
 }
