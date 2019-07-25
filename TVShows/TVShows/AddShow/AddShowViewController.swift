@@ -77,7 +77,7 @@ extension AddShowViewController {
                     SVProgressHUD.dismiss()
                     self?.didSelectCancel()
                 case .failure( _):
-                    SVProgressHUD.showError(withStatus: "Failure")
+                    self?.showAlert(title: "Error", message: "The operation can not be completed")
                 }
         }
     }
@@ -93,5 +93,11 @@ extension AddShowViewController {
         tempBody["season"] = seasonNumberTextView.text!
         
         return tempBody
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
 }
