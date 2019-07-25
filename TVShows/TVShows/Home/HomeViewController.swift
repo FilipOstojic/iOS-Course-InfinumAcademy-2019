@@ -60,9 +60,6 @@ extension HomeViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 90
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.tableFooterView = UIView()
     }
     
     func navigateToShowDetails(showID: String, userToken: String) {

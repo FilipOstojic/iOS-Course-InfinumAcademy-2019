@@ -130,7 +130,7 @@
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="loginButtonTapped:" destination="UUZ-Kk-59o" eventType="touchDragInside" id="pSV-bz-u0d"/>
+                                                                    <action selector="loginButtonTapped:" destination="UUZ-Kk-59o" eventType="touchUpInside" id="f7v-lq-QEi"/>
                                                                 </connections>
                                                             </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xyh-1D-Aie" userLabel="Register Stack View">

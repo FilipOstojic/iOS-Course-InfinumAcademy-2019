@@ -12,6 +12,7 @@
 		500759C322E91F8B000FC78A /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500759C222E91F8B000FC78A /* Episode.swift */; };
 		500759C622E99408000FC78A /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500759C522E99408000FC78A /* AddShowViewController.swift */; };
 		500759C822E9942E000FC78A /* AddShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500759C722E9942E000FC78A /* AddShow.storyboard */; };
+		500759CA22E9D962000FC78A /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500759C922E9D962000FC78A /* EpisodeTableViewCell.swift */; };
 		506D407122E7967300B199E3 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D407022E7967300B199E3 /* Show.swift */; };
 		508C961C22D5341500355D6F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508C961B22D5341500355D6F /* Login.storyboard */; };
 		508C962222D5354400355D6F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C962122D5354400355D6F /* LoginViewController.swift */; };
@@ -32,6 +33,7 @@
 		500759C222E91F8B000FC78A /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		500759C522E99408000FC78A /* AddShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShowViewController.swift; sourceTree = "<group>"; };
 		500759C722E9942E000FC78A /* AddShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddShow.storyboard; sourceTree = "<group>"; };
+		500759C922E9D962000FC78A /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		506D407022E7967300B199E3 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		508C961B22D5341500355D6F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		508C962122D5354400355D6F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				50CDAB1622E8D1B800836339 /* ShowDetails.storyboard */,
 				50CDAB1422E8D19E00836339 /* ShowDetailsViewController.swift */,
+				500759C922E9D962000FC78A /* EpisodeTableViewCell.swift */,
 				500759BE22E917DB000FC78A /* ShowDetails.swift */,
 				500759C222E91F8B000FC78A /* Episode.swift */,
 			);
@@ -277,6 +280,7 @@
 				500759BF22E917DB000FC78A /* ShowDetails.swift in Sources */,
 				506D407122E7967300B199E3 /* Show.swift in Sources */,
 				50DE2A4022E7BCA900EEE8FE /* TVShowTableViewCell.swift in Sources */,
+				500759CA22E9D962000FC78A /* EpisodeTableViewCell.swift in Sources */,
 				50CDAB1522E8D19E00836339 /* ShowDetailsViewController.swift in Sources */,
 				500759C622E99408000FC78A /* AddShowViewController.swift in Sources */,
 				500759C322E91F8B000FC78A /* Episode.swift in Sources */,

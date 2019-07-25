@@ -19,13 +19,16 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var showId:String = ""
-    var token:String = ""
+    @IBOutlet weak var tebleView: UITableView!
+    
+    var showId: String = ""
+    var token: String = ""
     var episodes: [Episode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavigationBar()
+        setUpTableView()
         setShowDetails()
     }
 }
@@ -34,7 +37,12 @@ class ShowDetailsViewController: UIViewController {
 extension ShowDetailsViewController {
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "AddShow", bundle: nil)
+        let addShowViewController = storyboard.instantiateViewController(withIdentifier: "AddShowViewController") as! AddShowViewController
+        addShowViewController.token = self.token
+        addShowViewController.showId = self.showId
+        let navigationController = UINavigationController(rootViewController: addShowViewController)
+        present(navigationController, animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -71,6 +79,11 @@ extension ShowDetailsViewController {
     func hideNavigationBar() {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    func setUpTableView() {
+        tebleView.delegate = self
+        tebleView.dataSource = self
+    }
 }
 
 
@@ -92,6 +105,8 @@ extension ShowDetailsViewController {
                     SVProgressHUD.dismiss()
                     self?.numberOfEpisodesLabel.text = String(listOfEpisodes.count)
                     self?.episodes = listOfEpisodes
+                    self?.tebleView.reloadData()
+                    
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
@@ -99,3 +114,30 @@ extension ShowDetailsViewController {
     }
 }
 
+// MARK: - Delegate
+
+extension ShowDetailsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - DataSource
+
+extension ShowDetailsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return episodes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EpisodeTableViewCell.self), for: indexPath) as! EpisodeTableViewCell
+        
+        cell.configure(with: episodes[indexPath.row])
+        
+        return cell
+    }
+
+}

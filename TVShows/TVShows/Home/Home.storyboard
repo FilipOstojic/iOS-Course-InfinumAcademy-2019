@@ -15,31 +15,32 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" title="Shows" id="DGo-Ne-ejv" customClass="HomeViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jfA-uA-4DV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="spa-kJ-hmm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TVShowTableViewCell" rowHeight="75" id="RX3-91-k9B" customClass="TVShowTableViewCell" customModule="TVShows" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TVShowTableViewCell" rowHeight="176" id="RX3-91-k9B" customClass="TVShowTableViewCell" customModule="TVShows" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RX3-91-k9B" id="dzx-8s-zge">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleAspectFit" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vky-g5-xVg">
-                                                    <rect key="frame" x="15" y="10" width="389" height="54.5"/>
+                                                    <rect key="frame" x="15" y="58" width="389" height="60"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JMd-aB-VBD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="54.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="aiS-zW-NO9" userLabel="width = 60"/>
+                                                                <constraint firstAttribute="height" constant="60" id="kfk-RC-EHA"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-0T-AEU" userLabel="Title Label">
-                                                            <rect key="frame" x="55" y="0.0" width="334" height="54.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-0T-AEU" userLabel="Title Label">
+                                                            <rect key="frame" x="55" y="0.0" width="334" height="60"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -48,10 +49,11 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="vky-g5-xVg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dzx-8s-zge" secondAttribute="top" constant="10" id="9xq-Pr-gFX"/>
                                                 <constraint firstItem="vky-g5-xVg" firstAttribute="leading" secondItem="dzx-8s-zge" secondAttribute="leading" constant="15" id="DY5-lc-FGv"/>
-                                                <constraint firstAttribute="bottom" secondItem="vky-g5-xVg" secondAttribute="bottom" constant="10" id="YRr-IV-gtX"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vky-g5-xVg" secondAttribute="bottom" constant="10" id="O49-C5-vTD"/>
+                                                <constraint firstItem="vky-g5-xVg" firstAttribute="centerY" secondItem="dzx-8s-zge" secondAttribute="centerY" id="R0e-Md-jok"/>
                                                 <constraint firstAttribute="trailing" secondItem="vky-g5-xVg" secondAttribute="trailing" constant="10" id="jMA-Hj-2fr"/>
-                                                <constraint firstItem="vky-g5-xVg" firstAttribute="top" secondItem="dzx-8s-zge" secondAttribute="top" constant="10" id="nyC-OH-AvD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="UITableViewCell"/>
@@ -73,6 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="C4B-Hl-Rd4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shows" id="n6D-Fc-15q"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="spa-kJ-hmm" id="7wZ-7B-rf7"/>
                     </connections>
@@ -80,24 +83,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI8-Ew-XUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3618.840579710145" y="26.785714285714285"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZaH-QX-Ma6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zne-RU-ZR9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jMs-eH-Hie">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="DGo-Ne-ejv" kind="relationship" relationship="rootViewController" id="HAf-tY-mmi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EDl-3P-d6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2708.6956521739135" y="26.785714285714285"/>
         </scene>
     </scenes>
     <resources>
