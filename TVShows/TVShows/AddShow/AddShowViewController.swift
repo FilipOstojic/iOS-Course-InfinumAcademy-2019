@@ -71,11 +71,11 @@ extension AddShowViewController {
                 headers: headers
             )
             .validate()
-            .responseData() { response in
+            .responseData() { [weak self] response in
                 switch response.result {
                 case .success( _):
                     SVProgressHUD.dismiss()
-                    // delegate episodeAdded
+                    self?.didSelectCancel()
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
