@@ -64,6 +64,15 @@ extension HomeViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
+    
+    func navigateToShowDetails(showID: String, userToken: String) {
+        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+        showDetailsViewController.showId = showID
+        showDetailsViewController.token = userToken
+        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
+        
+    }
 }
 
 
@@ -73,8 +82,8 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = shows[indexPath.row]
-        print("Selected Item: \(item)")
+        let show = shows[indexPath.row]
+        navigateToShowDetails(showID: show.id, userToken: token)
     }
 }
 

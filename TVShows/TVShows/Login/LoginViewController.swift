@@ -117,7 +117,6 @@ private extension LoginViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         homeViewController.token = loginUser!.token
-//        homeViewController.getShows()
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
