@@ -91,26 +91,33 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="S0E0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13K-Qp-q2x" userLabel="SeasonEpisode Label">
-                                                                            <rect key="frame" x="8" y="12" width="41" height="21"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S0E0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13K-Qp-q2x" userLabel="SeasonEpisode Label">
+                                                                            <rect key="frame" x="8" y="11.5" width="50" height="20.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="50" id="SVZ-03-j2h"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Episode Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvy-py-sbg" userLabel="Episode Title Label">
-                                                                            <rect key="frame" x="69" y="12" width="98.5" height="21"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvy-py-sbg" userLabel="Episode Title Label">
+                                                                            <rect key="frame" x="78" y="11.5" width="98.5" height="21"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic-navigation-chevron-right-medium" translatesAutoresizingMaskIntoConstraints="NO" id="AsV-bn-ZZg">
-                                                                            <rect key="frame" x="315" y="2" width="24" height="40"/>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-navigation-chevron-right-medium" translatesAutoresizingMaskIntoConstraints="NO" id="AsV-bn-ZZg">
+                                                                            <rect key="frame" x="330" y="10" width="24" height="24"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="Fvy-py-sbg" firstAttribute="centerY" secondItem="f69-Ar-bLH" secondAttribute="centerY" id="0Aa-eM-Y0o"/>
                                                                         <constraint firstItem="Fvy-py-sbg" firstAttribute="leading" secondItem="13K-Qp-q2x" secondAttribute="trailing" constant="20" id="4Li-tr-BVD"/>
+                                                                        <constraint firstItem="13K-Qp-q2x" firstAttribute="centerY" secondItem="f69-Ar-bLH" secondAttribute="centerY" id="5ow-mR-BO7"/>
+                                                                        <constraint firstItem="AsV-bn-ZZg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fvy-py-sbg" secondAttribute="trailing" constant="15" id="7j0-pt-cyP"/>
+                                                                        <constraint firstItem="AsV-bn-ZZg" firstAttribute="centerY" secondItem="f69-Ar-bLH" secondAttribute="centerY" id="Ac4-Pa-gr1"/>
                                                                         <constraint firstItem="13K-Qp-q2x" firstAttribute="leading" secondItem="f69-Ar-bLH" secondAttribute="leadingMargin" id="dWw-Ci-FoA"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="AsV-bn-ZZg" secondAttribute="trailing" constant="45" id="weF-bJ-uRr"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="AsV-bn-ZZg" secondAttribute="trailing" constant="30" id="weF-bJ-uRr"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
