@@ -74,18 +74,49 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C4B-Hl-Rd4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shows" id="n6D-Fc-15q"/>
+                    <navigationItem key="navigationItem" title="Shows" id="n6D-Fc-15q">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="doc-vG-f13">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dMr-Wg-8lx">
+                                <rect key="frame" x="20" y="10" width="78" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ic-logout"/>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="DGo-Ne-ejv" eventType="touchUpInside" id="rfQ-rz-zgt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="logoutButton" destination="dMr-Wg-8lx" id="bis-Ht-dw5"/>
                         <outlet property="tableView" destination="spa-kJ-hmm" id="7wZ-7B-rf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI8-Ew-XUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4528.985507246377" y="26.785714285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VJk-zV-SCD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5S2-lo-E0P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aiN-wE-Aqj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DGo-Ne-ejv" kind="relationship" relationship="rootViewController" id="fYK-me-u1K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yeh-fa-yAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="3618.840579710145" y="26.785714285714285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic-logout" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>

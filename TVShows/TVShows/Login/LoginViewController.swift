@@ -37,6 +37,7 @@ final class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        resetTextViews()
     }
     
 }
@@ -124,6 +125,11 @@ private extension LoginViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+    func resetTextViews() {
+        usernameTextField.text = ""
+        passwordTextField.text = ""
     }
 }
 

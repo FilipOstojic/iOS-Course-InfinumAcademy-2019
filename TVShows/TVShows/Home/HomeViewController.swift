@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logoutButton: UIButton!
     
     // MARK: - Properties
     
@@ -28,8 +29,20 @@ final class HomeViewController: UIViewController {
         getShows()
         setupTableView()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 }
 
+extension HomeViewController {
+    
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+}
 
 // MARK: API call to get all TVShows
 
