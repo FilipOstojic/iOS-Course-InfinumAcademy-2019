@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
@@ -75,11 +76,12 @@ extension HomeViewController {
         tableView.dataSource = self
     }
     
-    func navigateToShowDetails(showID: String, userToken: String) {
+    func navigateToShowDetails(showID: String, userToken: String, url: String) {
         let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
         let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
         showDetailsViewController.showId = showID
         showDetailsViewController.token = userToken
+        showDetailsViewController.imageUrl = url
         self.navigationController?.pushViewController(showDetailsViewController, animated: true)
         
     }
@@ -93,7 +95,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let show = shows[indexPath.row]
-        navigateToShowDetails(showID: show.id, userToken: token)
+        navigateToShowDetails(showID: show.id, userToken: token, url: show.imageUrl)
     }
 }
 

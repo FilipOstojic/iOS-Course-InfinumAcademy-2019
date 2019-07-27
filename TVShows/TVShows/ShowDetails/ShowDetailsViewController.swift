@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Alamofire
+import Kingfisher
 
 class ShowDetailsViewController: UIViewController {
     
@@ -18,12 +19,13 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var addNewEpisodeButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var tebleView: UITableView!
     
     var showId: String = ""
     var token: String = ""
     var episodes: [Episode] = []
+    var imageUrl: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +75,9 @@ extension ShowDetailsViewController {
                 case .success(let response):
                     SVProgressHUD.dismiss()
                     self?.descriptionTextView.text = response.description
+                    self?.descriptionTextView.isEditable = false
                     self?.titleLabel.text = response.title
+                    self?.setImage()
                     self?.getEpisodes()
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
@@ -88,6 +92,12 @@ extension ShowDetailsViewController {
     func setUpTableView() {
         tebleView.delegate = self
         tebleView.dataSource = self
+    }
+    
+    func setImage() {
+        let url = URL(string: "https://api.infinum.academy" + imageUrl)
+        showImage.kf.setImage(with: url, placeholder: UIImage(named: "login-logo"))
+        showImage.contentMode = UIView.ContentMode.scaleToFill
     }
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,16 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9c-Hl-vZm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLa-xD-jJJ" userLabel="Back Button">
-                                        <rect key="frame" x="15" y="15" width="32" height="32"/>
+                                        <rect key="frame" x="15" y="60" width="32" height="32"/>
                                         <state key="normal" image="ic-navigate-back"/>
                                         <connections>
                                             <action selector="backButtonTapped:" destination="alw-P9-HHi" eventType="touchUpInside" id="CeM-9f-K1O"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-aP-UAh">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="img-login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-aP-UAh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="rC0-Gu-C7i"/>
@@ -41,7 +41,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="168"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7T-me-Oyw" userLabel="Title Label">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="46.333333333333336" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -64,16 +64,16 @@
                                                 <rect key="frame" x="0.0" y="188" width="384" height="238"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-up-N9Y" userLabel="Episode Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="24"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTN-am-XwC" userLabel="Episodes Label">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="26.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ys-61-hD4" userLabel="Number Of Episodes Label">
-                                                                <rect key="frame" x="100" y="0.0" width="14" height="26.5"/>
+                                                                <rect key="frame" x="99.666666666666671" y="0.0" width="14" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -81,18 +81,18 @@
                                                         </subviews>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lfP-5C-GFU">
-                                                        <rect key="frame" x="0.0" y="53.5" width="384" height="184.5"/>
+                                                        <rect key="frame" x="0.0" y="51" width="384" height="187"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EpisodeTableViewCell" id="hiC-tA-gAJ" customClass="EpisodeTableViewCell" customModule="TVShows" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="28" width="384" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hiC-tA-gAJ" id="f69-Ar-bLH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="43.666666666666664"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S0E0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13K-Qp-q2x" userLabel="SeasonEpisode Label">
-                                                                            <rect key="frame" x="8" y="11.5" width="50" height="20.5"/>
+                                                                            <rect key="frame" x="8" y="11.666666666666666" width="50" height="20.333333333333336"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="SVZ-03-j2h"/>
                                                                             </constraints>
@@ -101,7 +101,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvy-py-sbg" userLabel="Episode Title Label">
-                                                                            <rect key="frame" x="78" y="11.5" width="98.5" height="21"/>
+                                                                            <rect key="frame" x="78" y="11.333333333333336" width="98.666666666666686" height="21"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -156,8 +156,8 @@
                                 <constraints>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="top" secondItem="w6S-aP-UAh" secondAttribute="bottom" constant="30" id="PKq-KM-2ld"/>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" constant="15" id="S7y-Fw-IIb"/>
-                                    <constraint firstItem="SLa-xD-jJJ" firstAttribute="top" secondItem="l9c-Hl-vZm" secondAttribute="top" constant="15" id="T2k-RL-Jcm"/>
-                                    <constraint firstAttribute="bottom" secondItem="DSH-aG-1Jt" secondAttribute="bottom" constant="15" id="TQC-FM-Osy"/>
+                                    <constraint firstItem="SLa-xD-jJJ" firstAttribute="top" secondItem="l9c-Hl-vZm" secondAttribute="top" constant="60" id="T2k-RL-Jcm"/>
+                                    <constraint firstAttribute="bottom" secondItem="DSH-aG-1Jt" secondAttribute="bottom" id="TQC-FM-Osy"/>
                                     <constraint firstItem="w6S-aP-UAh" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" id="hqG-16-raJ"/>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="centerX" secondItem="l9c-Hl-vZm" secondAttribute="centerX" id="m60-n7-1UJ"/>
                                     <constraint firstItem="SLa-xD-jJJ" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" constant="15" id="sd4-Un-hiq"/>
@@ -169,12 +169,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="leading" secondItem="bsV-zE-hwj" secondAttribute="leading" id="0BD-I4-IPX"/>
-                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="trailing" secondItem="bsV-zE-hwj" secondAttribute="trailing" id="ZGS-t1-Hmq"/>
-                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="top" secondItem="bsV-zE-hwj" secondAttribute="top" id="j3Q-VJ-GkF"/>
-                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="bottom" secondItem="bsV-zE-hwj" secondAttribute="bottom" id="udx-y1-jKP"/>
+                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="leading" secondItem="EAN-Xf-yv5" secondAttribute="leading" id="0BD-I4-IPX"/>
+                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="top" secondItem="gYF-4G-xW3" secondAttribute="top" id="K7w-VH-U73"/>
+                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="trailing" secondItem="EAN-Xf-yv5" secondAttribute="trailing" id="ZGS-t1-Hmq"/>
+                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="bottom" secondItem="EAN-Xf-yv5" secondAttribute="bottom" id="udx-y1-jKP"/>
+                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="top" secondItem="gYF-4G-xW3" secondAttribute="top" id="zNk-Pa-JhF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bsV-zE-hwj"/>
+                        <viewLayoutGuide key="safeArea" id="EAN-Xf-yv5"/>
                     </view>
                     <navigationItem key="navigationItem" id="HEX-7S-cU5"/>
                     <connections>
@@ -182,6 +183,7 @@
                         <outlet property="backButton" destination="SLa-xD-jJJ" id="431-qq-YE4"/>
                         <outlet property="descriptionTextView" destination="IPR-IQ-PzO" id="SMU-Nn-gXW"/>
                         <outlet property="numberOfEpisodesLabel" destination="2ys-61-hD4" id="xha-Gh-z51"/>
+                        <outlet property="showImage" destination="w6S-aP-UAh" id="pxf-bY-Qxd"/>
                         <outlet property="tebleView" destination="lfP-5C-GFU" id="QTK-nQ-KH7"/>
                         <outlet property="titleLabel" destination="l7T-me-Oyw" id="Cnz-ty-kRQ"/>
                     </connections>
