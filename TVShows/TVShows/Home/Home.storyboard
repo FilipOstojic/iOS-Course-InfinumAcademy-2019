@@ -58,6 +58,7 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="UITableViewCell"/>
                                         <connections>
+                                            <outlet property="thumbnail" destination="JMd-aB-VBD" id="pME-A0-Tbs"/>
                                             <outlet property="titleLabel" destination="VSa-0T-AEU" id="bzf-OK-F1p"/>
                                         </connections>
                                     </tableViewCell>
