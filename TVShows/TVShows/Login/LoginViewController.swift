@@ -51,33 +51,33 @@ private extension LoginViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Registration error",  message: "\nPlease enter username and password")
+//            showAlert(title: "Registration error",  message: "\nPlease enter username and password")
+            usernameTextField.shake()
+            passwordTextField.shake()
             return
         }
         
         registerUserWith(email: username, password: password)
-        loginButton.isEnabled = true
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Login error",  message: "\nPlease enter username and password")
+//            showAlert(title: "Login error",  message: "\nPlease enter username and password")
+            usernameTextField.shake()
+            passwordTextField.shake()
             return
         }
         
         loginUserWith(email: username, password: password)
-        loginButton.isEnabled = true
     }
     
     @IBAction func usernameValueChanged(_ sender: UITextField) {
@@ -196,5 +196,29 @@ private extension LoginViewController {
                 }
         }
     }
-
 }
+
+// MARK: - Animations
+
+private extension UITextField {
+    
+    func shake() {
+        let shake = CABasicAnimation(keyPath: "position")
+        shake.duration = 0.1
+        shake.repeatCount = 2
+        shake.autoreverses = true
+        
+        let fromPoint = CGPoint(x: center.x - 5, y: center.y)
+        let fromValue = NSValue(cgPoint: fromPoint)
+        
+        let toPoint = CGPoint(x: center.x + 5, y: center.y)
+        let toValue = NSValue(cgPoint: toPoint)
+        
+        shake.fromValue = fromValue
+        shake.toValue = toValue
+        
+        layer.add(shake, forKey: "position")
+    }
+}
+
+
