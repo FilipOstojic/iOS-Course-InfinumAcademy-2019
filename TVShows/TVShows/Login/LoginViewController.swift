@@ -26,11 +26,17 @@ final class LoginViewController: UIViewController {
     // MARK: - properties
     
     private var loginUser: LoginData?
+    private var remeberMe: Bool = false
     
     // MARK: - lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.getRemeberMe() {
+            usernameTextField.text = UserDefaults.standard.getUsername()
+            passwordTextField.text = UserDefaults.standard.getPassword()
+            loginButtonTapped(loginButton)
+        }
         setCursorColor()
     }
     
@@ -48,6 +54,7 @@ private extension LoginViewController {
     
     @IBAction private func checkChange(_ sender: UIButton) {
         checkButton.isSelected.toggle()
+        remeberMe.toggle()
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
@@ -130,6 +137,14 @@ private extension LoginViewController {
     func resetTextViews() {
         usernameTextField.text = ""
         passwordTextField.text = ""
+        checkButton.isSelected = false
+        remeberMe = false
+    }
+    
+    func setUserDefaults() {
+        UserDefaults.standard.setRemeberMe(value: remeberMe)
+        UserDefaults.standard.setPassword(password: passwordTextField.text!)
+        UserDefaults.standard.setUsername(value: usernameTextField.text!)
     }
 }
 
@@ -189,6 +204,7 @@ private extension LoginViewController {
                 case .success(let loginToken):
                     SVProgressHUD.showSuccess(withStatus: "Success")
                     self?.loginUser = loginToken
+                    self?.setUserDefaults()
                     self?.navigateToHome()
                 case .failure( _):
                     self?.setLineColor(color: .red)

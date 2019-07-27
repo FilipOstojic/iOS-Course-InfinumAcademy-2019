@@ -40,6 +40,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     @IBAction func logoutTapped(_ sender: UIButton) {
+        UserDefaults.standard.setRemeberMe(value: false)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -83,7 +84,6 @@ extension HomeViewController {
         showDetailsViewController.token = userToken
         showDetailsViewController.imageUrl = url
         self.navigationController?.pushViewController(showDetailsViewController, animated: true)
-        
     }
 }
 
