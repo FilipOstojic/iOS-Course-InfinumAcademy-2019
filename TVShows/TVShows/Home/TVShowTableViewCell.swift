@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TVShowTableViewCell: UITableViewCell {
     
@@ -37,8 +38,8 @@ extension TVShowTableViewCell {
     
     func configure(with item: Show) {
         titleLabel.text = item.title
-//        let url = URL(string: "https://api.infinum.academy" + item.imageUrl)
-//        thumbnail.kf.setImage(with: url)
+        let url = URL(string: "https://api.infinum.academy" + item.imageUrl)
+        thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "login-logo"))
     }
     
 }
