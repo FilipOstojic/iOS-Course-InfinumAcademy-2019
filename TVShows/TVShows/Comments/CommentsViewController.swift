@@ -14,15 +14,22 @@ class CommentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var inputCommentTextField: UITextField!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet var inputBarBottomConstraint: NSLayoutConstraint!
     
     var comments: [Comment] = []
     var token: String = ""
     var episodeId: String = ""
+    let refresher = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchComments()
         setupTableView()
+//        showEmptyState()
+        addKeyboardEventsHandlers()
+        setUpRefresheControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +41,80 @@ class CommentsViewController: UIViewController {
         tableView.dataSource = self
     }
     
+//    func showEmptyState() {
+//        if comments.count == 0 {
+//            let imageView = UIImageView()
+//            imageView.image = UIImage(named: "img-placeholder-comments")
+//            tableView.backgroundView = imageView
+//        }
+//    }
+    
+    private func addKeyboardEventsHandlers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    private func setUpRefresheControl() {
+        refresher.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
+        refresher.addTarget(self, action: #selector(updateTableView), for: .valueChanged)
+        tableView.refreshControl = refresher
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        var userInfo = notification.userInfo!
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        inputBarBottomConstraint.constant = keyboardFrame.size.height
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        var userInfo = notification.userInfo!
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        inputBarBottomConstraint.constant = 0
+    }
+    
+    @objc func updateTableView() {
+        fetchComments()
+        let delay = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
+            self?.refresher.endRefreshing()
+        }
+    }
+    
 }
 
 extension CommentsViewController {
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func postButtonTapped(_ sender: UIButton) {
+        SVProgressHUD.show()
+        let headers = ["Authorization": token]
+        let body: [String:String] = [ "text": inputCommentTextField.text!,
+                                      "episodeId": episodeId ]
+        
+        Alamofire
+            .request("https://api.infinum.academy/api/comments/",
+                     method: .post,
+                     parameters: body,
+                     encoding: JSONEncoding.default,
+                     headers: headers
+            )
+            .validate()
+            .responseData() { [weak self] response in
+                switch response.result {
+                case .success( _):
+                    SVProgressHUD.dismiss()
+                    self?.inputCommentTextField.text = ""
+                    self?.fetchComments()
+                case .failure( _):
+                    SVProgressHUD.showError(withStatus: "Failure")
+                }
+        }
     }
     
 }

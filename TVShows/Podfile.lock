@@ -3,12 +3,14 @@ PODS:
   - CodableAlamofire (1.1.1):
     - Alamofire (~> 4.0)
   - Kingfisher (5.7.0)
+  - KWKeyboardListener (1.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire
   - CodableAlamofire
   - Kingfisher
+  - KWKeyboardListener
   - SVProgressHUD
 
 SPEC REPOS:
@@ -16,14 +18,16 @@ SPEC REPOS:
     - Alamofire
     - CodableAlamofire
     - Kingfisher
+    - KWKeyboardListener
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   CodableAlamofire: b587c1198562824abb1f468aed34feb00d6cecd8
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  KWKeyboardListener: 79a832a6b9cbdfa5e3e43609a1862fd96c31421b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: be866d0805509149d130fcd41281f34610711a01
+PODFILE CHECKSUM: c20ed97686480b24831d04ac7e0884a0ab4b8f8e
 
 COCOAPODS: 1.7.3
