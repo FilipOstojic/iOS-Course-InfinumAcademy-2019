@@ -14,6 +14,10 @@
 		500759C822E9942E000FC78A /* AddShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500759C722E9942E000FC78A /* AddShow.storyboard */; };
 		500759CA22E9D962000FC78A /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500759C922E9D962000FC78A /* EpisodeTableViewCell.swift */; };
 		502DA9AC22ED09E10011EF14 /* UserDefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DA9AB22ED09E10011EF14 /* UserDefaultsUtil.swift */; };
+		502DA9AF22EDBF8B0011EF14 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DA9AE22EDBF8B0011EF14 /* EpisodeDetailsViewController.swift */; };
+		505E753522EDBFCD008AFE38 /* EpisodeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505E753422EDBFCD008AFE38 /* EpisodeDetails.storyboard */; };
+		505E753822EDF8CA008AFE38 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E753722EDF8CA008AFE38 /* CommentsViewController.swift */; };
+		505E753A22EDF8D8008AFE38 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505E753922EDF8D8008AFE38 /* Storyboard.storyboard */; };
 		506D407122E7967300B199E3 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D407022E7967300B199E3 /* Show.swift */; };
 		508C961C22D5341500355D6F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508C961B22D5341500355D6F /* Login.storyboard */; };
 		508C962222D5354400355D6F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C962122D5354400355D6F /* LoginViewController.swift */; };
@@ -37,6 +41,10 @@
 		500759C722E9942E000FC78A /* AddShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddShow.storyboard; sourceTree = "<group>"; };
 		500759C922E9D962000FC78A /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		502DA9AB22ED09E10011EF14 /* UserDefaultsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtil.swift; sourceTree = "<group>"; };
+		502DA9AE22EDBF8B0011EF14 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
+		505E753422EDBFCD008AFE38 /* EpisodeDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeDetails.storyboard; sourceTree = "<group>"; };
+		505E753722EDF8CA008AFE38 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		505E753922EDF8D8008AFE38 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		506D407022E7967300B199E3 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		508C961B22D5341500355D6F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		508C962122D5354400355D6F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +93,24 @@
 			path = AddShow;
 			sourceTree = "<group>";
 		};
+		502DA9AD22EDBF4F0011EF14 /* EpisodeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				505E753422EDBFCD008AFE38 /* EpisodeDetails.storyboard */,
+				502DA9AE22EDBF8B0011EF14 /* EpisodeDetailsViewController.swift */,
+			);
+			path = EpisodeDetails;
+			sourceTree = "<group>";
+		};
+		505E753622EDF8B0008AFE38 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				505E753722EDF8CA008AFE38 /* CommentsViewController.swift */,
+				505E753922EDF8D8008AFE38 /* Storyboard.storyboard */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		508C961A22D4F5CB00355D6F /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +143,8 @@
 		509F93AC22CE540E0090D93D /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				505E753622EDF8B0008AFE38 /* Comments */,
+				502DA9AD22EDBF4F0011EF14 /* EpisodeDetails */,
 				500759C422E993D4000FC78A /* AddShow */,
 				50CDAB1322E8D13700836339 /* ShowDetails */,
 				50B0277022DE636400D27DB0 /* Home */,
@@ -227,7 +255,9 @@
 				509F93B522CE540F0090D93D /* Assets.xcassets in Resources */,
 				500759C822E9942E000FC78A /* AddShow.storyboard in Resources */,
 				50CDAB1722E8D1B800836339 /* ShowDetails.storyboard in Resources */,
+				505E753A22EDF8D8008AFE38 /* Storyboard.storyboard in Resources */,
 				50C1DA4322DF28AB005F2F45 /* Home.storyboard in Resources */,
+				505E753522EDBFCD008AFE38 /* EpisodeDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,9 +318,11 @@
 				50D4B97C22EB347A006633E3 /* DescriptionTableViewCell.swift in Sources */,
 				506D407122E7967300B199E3 /* Show.swift in Sources */,
 				50DE2A4022E7BCA900EEE8FE /* TVShowTableViewCell.swift in Sources */,
+				505E753822EDF8CA008AFE38 /* CommentsViewController.swift in Sources */,
 				500759CA22E9D962000FC78A /* EpisodeTableViewCell.swift in Sources */,
 				50CDAB1522E8D19E00836339 /* ShowDetailsViewController.swift in Sources */,
 				500759C622E99408000FC78A /* AddShowViewController.swift in Sources */,
+				502DA9AF22EDBF8B0011EF14 /* EpisodeDetailsViewController.swift in Sources */,
 				500759C322E91F8B000FC78A /* Episode.swift in Sources */,
 				50B0277E22DE6EEB00D27DB0 /* HomeViewController.swift in Sources */,
 			);

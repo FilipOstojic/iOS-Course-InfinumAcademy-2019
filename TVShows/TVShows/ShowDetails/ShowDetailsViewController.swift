@@ -32,6 +32,7 @@ class ShowDetailsViewController: UIViewController {
         hideNavigationBar()
         setUpTableView()
         setShowDetails()
+        adjustUITextViewHeight(textView: descriptionTextView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +100,21 @@ extension ShowDetailsViewController {
         showImage.kf.setImage(with: url, placeholder: UIImage(named: "login-logo"))
         showImage.contentMode = UIView.ContentMode.scaleAspectFill
     }
+    
+    func navigateToEpisodeDetails(selectedEpisode: Episode) {
+        let storyboard = UIStoryboard(name: "EpisodeDetails", bundle: nil)
+        let episodeDetailsViewController = storyboard.instantiateViewController(withIdentifier: "EpisodeDetailsViewController") as! EpisodeDetailsViewController
+        episodeDetailsViewController.episode = selectedEpisode
+        episodeDetailsViewController.token = token
+        self.navigationController?.pushViewController(episodeDetailsViewController, animated: true)
+    }
+    
+    func adjustUITextViewHeight(textView : UITextView) {
+        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.sizeToFit()
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+    }
 }
 
 
@@ -135,6 +151,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        navigateToEpisodeDetails(selectedEpisode: episodes[indexPath.row])
     }
 }
 
