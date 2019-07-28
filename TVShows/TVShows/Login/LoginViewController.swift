@@ -15,6 +15,7 @@ final class LoginViewController: UIViewController {
     
     // MARK: - outlets
     
+    @IBOutlet weak var hidePasswordButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var checkButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
@@ -51,6 +52,11 @@ private extension LoginViewController {
     @IBAction private func checkChange(_ sender: UIButton) {
         checkButton.isSelected.toggle()
         remeberMe.toggle()
+    }
+    
+    @IBAction func hidePasswordButtonTapped(_ sender: UIButton) {
+        hidePasswordButton.isSelected.toggle()
+        passwordTextField.isSecureTextEntry.toggle()
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {

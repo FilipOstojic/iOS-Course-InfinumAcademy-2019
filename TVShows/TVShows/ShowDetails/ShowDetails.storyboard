@@ -21,13 +21,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9c-Hl-vZm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLa-xD-jJJ" userLabel="Back Button">
-                                        <rect key="frame" x="15" y="60" width="32" height="32"/>
-                                        <state key="normal" image="ic-navigate-back"/>
-                                        <connections>
-                                            <action selector="backButtonTapped:" destination="alw-P9-HHi" eventType="touchUpInside" id="CeM-9f-K1O"/>
-                                        </connections>
-                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="img-login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-aP-UAh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <constraints>
@@ -156,21 +149,27 @@
                                 <constraints>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="top" secondItem="w6S-aP-UAh" secondAttribute="bottom" constant="30" id="PKq-KM-2ld"/>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" constant="15" id="S7y-Fw-IIb"/>
-                                    <constraint firstItem="SLa-xD-jJJ" firstAttribute="top" secondItem="l9c-Hl-vZm" secondAttribute="top" constant="60" id="T2k-RL-Jcm"/>
                                     <constraint firstAttribute="bottom" secondItem="DSH-aG-1Jt" secondAttribute="bottom" id="TQC-FM-Osy"/>
                                     <constraint firstItem="w6S-aP-UAh" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" id="hqG-16-raJ"/>
                                     <constraint firstItem="DSH-aG-1Jt" firstAttribute="centerX" secondItem="l9c-Hl-vZm" secondAttribute="centerX" id="m60-n7-1UJ"/>
-                                    <constraint firstItem="SLa-xD-jJJ" firstAttribute="leading" secondItem="l9c-Hl-vZm" secondAttribute="leading" constant="15" id="sd4-Un-hiq"/>
                                     <constraint firstAttribute="trailing" secondItem="DSH-aG-1Jt" secondAttribute="trailing" constant="15" id="szf-L4-lfa"/>
                                     <constraint firstItem="w6S-aP-UAh" firstAttribute="top" secondItem="l9c-Hl-vZm" secondAttribute="top" id="u6x-CM-wty"/>
                                     <constraint firstAttribute="trailing" secondItem="w6S-aP-UAh" secondAttribute="trailing" id="yaQ-LE-6qJ"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLa-xD-jJJ" userLabel="Back Button">
+                                <rect key="frame" x="15" y="59" width="32" height="32"/>
+                                <state key="normal" image="ic-navigate-back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="alw-P9-HHi" eventType="touchUpInside" id="CeM-9f-K1O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="l9c-Hl-vZm" firstAttribute="leading" secondItem="EAN-Xf-yv5" secondAttribute="leading" id="0BD-I4-IPX"/>
-                            <constraint firstItem="l9c-Hl-vZm" firstAttribute="top" secondItem="gYF-4G-xW3" secondAttribute="top" id="K7w-VH-U73"/>
+                            <constraint firstItem="SLa-xD-jJJ" firstAttribute="top" secondItem="EAN-Xf-yv5" secondAttribute="top" constant="15" id="7LC-eJ-VO5"/>
+                            <constraint firstItem="SLa-xD-jJJ" firstAttribute="leading" secondItem="EAN-Xf-yv5" secondAttribute="leading" constant="15" id="ETX-z5-lSD"/>
                             <constraint firstItem="l9c-Hl-vZm" firstAttribute="trailing" secondItem="EAN-Xf-yv5" secondAttribute="trailing" id="ZGS-t1-Hmq"/>
                             <constraint firstItem="l9c-Hl-vZm" firstAttribute="bottom" secondItem="EAN-Xf-yv5" secondAttribute="bottom" id="udx-y1-jKP"/>
                             <constraint firstItem="l9c-Hl-vZm" firstAttribute="top" secondItem="gYF-4G-xW3" secondAttribute="top" id="zNk-Pa-JhF"/>

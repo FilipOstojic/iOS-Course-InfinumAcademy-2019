@@ -63,18 +63,34 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IQ2-aa-tOQ" userLabel="Password Stack View">
                                                                         <rect key="frame" x="0.0" y="71" width="375" height="51"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-9s-uwE">
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpv-Fi-xAY">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="50" id="o0s-WG-n6r" userLabel="height = 40"/>
-                                                                                </constraints>
-                                                                                <nil key="textColor"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                                                <connections>
-                                                                                    <action selector="passwordValueChanged:" destination="UUZ-Kk-59o" eventType="editingChanged" id="wtw-sa-QZ5"/>
-                                                                                </connections>
-                                                                            </textField>
+                                                                                <subviews>
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-9s-uwE">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="50" id="o0s-WG-n6r" userLabel="height = 40"/>
+                                                                                        </constraints>
+                                                                                        <nil key="textColor"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                                        <connections>
+                                                                                            <action selector="passwordValueChanged:" destination="UUZ-Kk-59o" eventType="editingChanged" id="wtw-sa-QZ5"/>
+                                                                                        </connections>
+                                                                                    </textField>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHe-oe-HTJ">
+                                                                                        <rect key="frame" x="335" y="0.0" width="40" height="50"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" constant="40" id="WZi-m9-Qmx"/>
+                                                                                        </constraints>
+                                                                                        <state key="normal" image="ic-characters-hide"/>
+                                                                                        <state key="selected" image="ic-hide-password"/>
+                                                                                        <connections>
+                                                                                            <action selector="hidePasswordButtonTapped:" destination="UUZ-Kk-59o" eventType="touchUpInside" id="NCO-vQ-47U"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                            </stackView>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6l-Qh-QUV" userLabel="Password View">
                                                                                 <rect key="frame" x="0.0" y="50" width="375" height="1"/>
                                                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,6 +212,7 @@
                     <navigationItem key="navigationItem" id="bMW-Do-gu8"/>
                     <connections>
                         <outlet property="checkButton" destination="U1p-nj-LfS" id="AOq-tp-0MW"/>
+                        <outlet property="hidePasswordButton" destination="hHe-oe-HTJ" id="Qbs-bJ-Pzt"/>
                         <outlet property="loginButton" destination="OgY-JV-oJp" id="4ZO-6Y-9gA"/>
                         <outlet property="passwordLine" destination="b6l-Qh-QUV" id="rrE-3b-c56"/>
                         <outlet property="passwordTextField" destination="RXG-9s-uwE" id="Lwh-Y8-6Wm"/>
@@ -228,8 +245,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic-characters-hide" width="24" height="24"/>
         <image name="ic-checkbox-empty" width="24" height="24"/>
         <image name="ic-checkbox-filled" width="24" height="24"/>
+        <image name="ic-hide-password" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>

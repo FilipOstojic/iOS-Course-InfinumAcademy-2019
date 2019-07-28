@@ -97,7 +97,7 @@ extension ShowDetailsViewController {
     func setImage() {
         let url = URL(string: "https://api.infinum.academy" + imageUrl)
         showImage.kf.setImage(with: url, placeholder: UIImage(named: "login-logo"))
-        showImage.contentMode = UIView.ContentMode.scaleToFill
+        showImage.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }
 
