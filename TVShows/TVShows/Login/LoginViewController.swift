@@ -32,11 +32,6 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.getRemeberMe() {
-            usernameTextField.text = UserDefaults.standard.getUsername()
-            passwordTextField.text = UserDefaults.standard.getPassword()
-            loginButtonTapped(loginButton)
-        }
         setCursorColor()
     }
     
@@ -44,6 +39,7 @@ final class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         resetTextViews()
+        remeberMeNavigation()
     }
     
 }
@@ -139,6 +135,16 @@ private extension LoginViewController {
         passwordTextField.text = ""
         checkButton.isSelected = false
         remeberMe = false
+    }
+    
+    func remeberMeNavigation() {
+        if UserDefaults.standard.getRemeberMe() {
+            usernameTextField.text = UserDefaults.standard.getUsername()
+            passwordTextField.text = UserDefaults.standard.getPassword()
+            checkButton.isSelected = UserDefaults.standard.getRemeberMe()
+            remeberMe = UserDefaults.standard.getRemeberMe()
+            loginButtonTapped(loginButton)
+        }
     }
     
     func setUserDefaults() {
