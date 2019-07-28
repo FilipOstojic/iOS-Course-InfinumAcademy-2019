@@ -26,6 +26,10 @@ class EpisodeDetailsViewController: UIViewController {
         super.viewDidLoad()
         setAllProperties()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 
@@ -42,6 +46,13 @@ extension EpisodeDetailsViewController {
         seasonEpisodeLabel.text = String("S" + episode!.season + " Ep" + episode!.episodeNumber)
         descriptionLabel.text = episode!.description
         titleLabel.text = episode!.title
+        setImage()
+    }
+    
+    func setImage() {
+        let url = URL(string: "https://api.infinum.academy" + episode!.imageUrl)
+        episodeImage.kf.setImage(with: url, placeholder: UIImage(named: "login-logo"))
+        episodeImage.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }
 
@@ -53,6 +64,10 @@ extension EpisodeDetailsViewController {
     }
     
     @IBAction func commentButtonTapped(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "Comments", bundle: nil)
+        let commentsViewController = storyboard.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        commentsViewController.token = token
+        commentsViewController.episodeId = episode!.id
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
 }

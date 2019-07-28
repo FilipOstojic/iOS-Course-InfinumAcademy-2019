@@ -33,22 +33,12 @@
                                         <color key="textColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibJ-iO-0gY" userLabel="DescrioptionLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibJ-iO-0gY" userLabel="DescrioptionLabel">
                                         <rect key="frame" x="15" y="480" width="384" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-RY-P3M" userLabel="CommentButton">
-                                        <rect key="frame" x="15" y="520.5" width="110" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Comment" image="ic-message-circle">
-                                            <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="commentButtonTapped:" destination="rrd-Eh-aPA" eventType="touchUpInside" id="fhn-Wh-5kF"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaA-Iq-W0C" userLabel="Title Label">
                                         <rect key="frame" x="15" y="370" width="384" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -59,15 +49,13 @@
                                 <constraints>
                                     <constraint firstItem="ikU-2u-BL1" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="1Vt-Qs-qZK"/>
                                     <constraint firstAttribute="trailing" secondItem="ibJ-iO-0gY" secondAttribute="trailing" constant="15" id="3C2-nb-4MA"/>
-                                    <constraint firstItem="nlX-RY-P3M" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="4Sf-Xj-JAL"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nlX-RY-P3M" secondAttribute="bottom" constant="20" id="BG5-my-J6P"/>
                                     <constraint firstAttribute="trailing" secondItem="ikU-2u-BL1" secondAttribute="trailing" constant="15" id="Dw8-tR-Ua8"/>
                                     <constraint firstItem="HaA-Iq-W0C" firstAttribute="top" secondItem="VD9-uN-vH6" secondAttribute="bottom" constant="20" id="Ogx-iT-aXy"/>
                                     <constraint firstItem="VD9-uN-vH6" firstAttribute="top" secondItem="tYg-dN-s1g" secondAttribute="top" id="Q2a-Je-NrL"/>
                                     <constraint firstItem="ibJ-iO-0gY" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="RYQ-xU-0Ju"/>
-                                    <constraint firstItem="nlX-RY-P3M" firstAttribute="top" secondItem="ibJ-iO-0gY" secondAttribute="bottom" constant="20" id="TlI-EL-D2F"/>
                                     <constraint firstAttribute="trailing" secondItem="VD9-uN-vH6" secondAttribute="trailing" id="V6B-fQ-L2q"/>
                                     <constraint firstItem="VD9-uN-vH6" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" id="a6d-qI-YZs"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ibJ-iO-0gY" secondAttribute="bottom" constant="60" id="gse-EL-Z7r"/>
                                     <constraint firstItem="ikU-2u-BL1" firstAttribute="top" secondItem="HaA-Iq-W0C" secondAttribute="bottom" constant="20" id="qMv-nJ-BAt"/>
                                     <constraint firstItem="ibJ-iO-0gY" firstAttribute="top" secondItem="ikU-2u-BL1" secondAttribute="bottom" constant="30" id="qXO-Q7-xJa"/>
                                     <constraint firstItem="HaA-Iq-W0C" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="u69-QV-hhV"/>
@@ -82,9 +70,24 @@
                                     <action selector="backButtonTapped:" destination="rrd-Eh-aPA" eventType="touchUpInside" id="8cg-AU-h6u"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-RY-P3M" userLabel="CommentButton">
+                                <rect key="frame" x="15" y="823" width="150" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Qca-yQ-dFx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Comment" image="ic-message-circle">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="commentButtonTapped:" destination="rrd-Eh-aPA" eventType="touchUpInside" id="fhn-Wh-5kF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="FPb-CZ-k1V" firstAttribute="bottom" secondItem="nlX-RY-P3M" secondAttribute="bottom" constant="15" id="IsC-GK-Zzd"/>
+                            <constraint firstItem="nlX-RY-P3M" firstAttribute="leading" secondItem="FPb-CZ-k1V" secondAttribute="leading" constant="15" id="R24-nE-ggk"/>
                             <constraint firstItem="tYg-dN-s1g" firstAttribute="bottom" secondItem="FPb-CZ-k1V" secondAttribute="bottom" id="dV3-fF-KEZ"/>
                             <constraint firstItem="tYg-dN-s1g" firstAttribute="trailing" secondItem="FPb-CZ-k1V" secondAttribute="trailing" id="e7a-CF-RTB"/>
                             <constraint firstItem="tYg-dN-s1g" firstAttribute="top" secondItem="c7f-Dd-zpS" secondAttribute="top" id="oPM-aJ-25l"/>
