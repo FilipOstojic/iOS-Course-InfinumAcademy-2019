@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pVa-gn-Nfd">
-                                <rect key="frame" x="0.0" y="88" width="414" height="729"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentsTableViewCell" rowHeight="155" id="rjC-xQ-5L9" customClass="CommentsTableViewCell" customModule="TVShows" customModuleProvider="target">
@@ -67,40 +67,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivo-ln-qCe" userLabel="Post Button">
-                                <rect key="frame" x="344" y="822" width="60" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="z3X-6R-4B2">
+                                <rect key="frame" x="15" y="822" width="384" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4GE-ls-zPm">
+                                        <rect key="frame" x="0.0" y="0.0" width="319" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivo-ln-qCe" userLabel="Post Button">
+                                        <rect key="frame" x="324" y="0.0" width="60" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="j5c-FE-qRK"/>
+                                            <constraint firstAttribute="width" constant="60" id="lqb-2V-fWg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Post">
+                                            <color key="titleColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postButtonTapped:" destination="dc9-Fe-JaZ" eventType="touchUpInside" id="AbR-7A-Ohe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="j5c-FE-qRK"/>
-                                    <constraint firstAttribute="width" constant="60" id="lqb-2V-fWg"/>
+                                    <constraint firstAttribute="height" constant="40" id="HeZ-F9-zgo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="Post">
-                                    <color key="titleColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="postButtonTapped:" destination="dc9-Fe-JaZ" eventType="touchUpInside" id="AbR-7A-Ohe"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4GE-ls-zPm">
-                                <rect key="frame" x="15" y="822" width="324" height="40"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uhM-h3-nsE" firstAttribute="bottom" secondItem="ivo-ln-qCe" secondAttribute="bottom" id="7Wv-Pw-zds"/>
-                            <constraint firstItem="uhM-h3-nsE" firstAttribute="trailing" secondItem="ivo-ln-qCe" secondAttribute="trailing" constant="10" id="8rE-Jo-Fke"/>
+                            <constraint firstItem="uhM-h3-nsE" firstAttribute="bottom" secondItem="z3X-6R-4B2" secondAttribute="bottom" id="8ym-aA-dKu"/>
                             <constraint firstItem="pVa-gn-Nfd" firstAttribute="top" secondItem="uhM-h3-nsE" secondAttribute="top" id="FFf-JL-WaR"/>
-                            <constraint firstItem="4GE-ls-zPm" firstAttribute="top" secondItem="pVa-gn-Nfd" secondAttribute="bottom" constant="5" id="Vvs-Uk-P7e"/>
-                            <constraint firstItem="ivo-ln-qCe" firstAttribute="leading" secondItem="4GE-ls-zPm" secondAttribute="trailing" constant="5" id="bCq-IY-oV2"/>
+                            <constraint firstItem="z3X-6R-4B2" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" constant="15" id="aPC-VE-619"/>
+                            <constraint firstItem="uhM-h3-nsE" firstAttribute="trailing" secondItem="z3X-6R-4B2" secondAttribute="trailing" constant="15" id="dh3-o6-PZ3"/>
+                            <constraint firstItem="uhM-h3-nsE" firstAttribute="bottom" secondItem="pVa-gn-Nfd" secondAttribute="bottom" id="jJ8-J1-OPd"/>
                             <constraint firstItem="uhM-h3-nsE" firstAttribute="trailing" secondItem="pVa-gn-Nfd" secondAttribute="trailing" id="qyP-J6-Eku"/>
                             <constraint firstItem="pVa-gn-Nfd" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" id="rhq-iz-rzg"/>
-                            <constraint firstItem="ivo-ln-qCe" firstAttribute="height" secondItem="4GE-ls-zPm" secondAttribute="height" id="vOt-Ui-sU7"/>
-                            <constraint firstItem="4GE-ls-zPm" firstAttribute="bottom" secondItem="uhM-h3-nsE" secondAttribute="bottom" id="wb0-N4-Ccs"/>
-                            <constraint firstItem="4GE-ls-zPm" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" constant="15" id="xB3-QG-HyJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uhM-h3-nsE"/>
                     </view>
@@ -118,10 +123,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="0lN-Bj-pyq" id="22a-gu-LIA"/>
+                        <outlet property="inputBarBottomConstraint" destination="8ym-aA-dKu" id="dka-nA-EmB"/>
                         <outlet property="inputCommentTextField" destination="4GE-ls-zPm" id="TES-dG-vJf"/>
                         <outlet property="postButton" destination="ivo-ln-qCe" id="Xql-47-q8O"/>
                         <outlet property="tableView" destination="pVa-gn-Nfd" id="bWm-2X-52j"/>
-                        <outletCollection property="inputBarBottomConstraint" destination="wb0-N4-Ccs" collectionClass="NSMutableArray" id="bBL-bX-mW0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELi-Km-GSP" userLabel="First Responder" sceneMemberID="firstResponder"/>

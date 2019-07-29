@@ -12,16 +12,20 @@ import SVProgressHUD
 
 class CommentsViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var inputCommentTextField: UITextField!
     @IBOutlet weak var postButton: UIButton!
-    @IBOutlet var inputBarBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var inputBarBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Properties
     
     var comments: [Comment] = []
     var token: String = ""
     var episodeId: String = ""
-    let refresher = UIRefreshControl()
+    private let refresher = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +34,14 @@ class CommentsViewController: UIViewController {
 //        showEmptyState()
         addKeyboardEventsHandlers()
         setUpRefresheControl()
+        setUpTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -50,9 +55,9 @@ class CommentsViewController: UIViewController {
 //    }
     
     private func addKeyboardEventsHandlers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillShowNotification, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setUpRefresheControl() {
@@ -61,18 +66,21 @@ class CommentsViewController: UIViewController {
         tableView.refreshControl = refresher
     }
     
+    private func setUpTapGesture() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
-        var userInfo = notification.userInfo!
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        inputBarBottomConstraint.constant = keyboardFrame.size.height
+        let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        inputBarBottomConstraint.constant = keyboardHeight - 30
+        print(inputBarBottomConstraint.constant)
+        print(keyboardHeight)
     }
     
     @objc func keyboardWillHide(notification:NSNotification) {
-        var userInfo = notification.userInfo!
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         inputBarBottomConstraint.constant = 0
+        print(inputBarBottomConstraint.constant)
     }
     
     @objc func updateTableView() {
@@ -81,6 +89,10 @@ class CommentsViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
             self?.refresher.endRefreshing()
         }
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 }

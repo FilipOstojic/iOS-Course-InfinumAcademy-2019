@@ -7,5 +7,4 @@ target 'TVShows' do
   pod 'CodableAlamofire'
   pod 'SVProgressHUD'
   pod 'Kingfisher'
-  pod 'KWKeyboardListener'
 end
