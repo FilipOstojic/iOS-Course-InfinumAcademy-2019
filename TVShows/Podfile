@@ -6,4 +6,5 @@ target 'TVShows' do
   pod 'Alamofire'
   pod 'CodableAlamofire'
   pod 'SVProgressHUD'
+  pod 'Kingfisher'
 end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5S2-lo-E0P">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,17 +30,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleAspectFit" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vky-g5-xVg">
-                                                    <rect key="frame" x="15" y="58" width="389" height="60"/>
+                                                    <rect key="frame" x="15" y="13" width="389" height="150"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JMd-aB-VBD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="aiS-zW-NO9" userLabel="width = 60"/>
-                                                                <constraint firstAttribute="height" constant="60" id="kfk-RC-EHA"/>
+                                                                <constraint firstAttribute="width" constant="120" id="aiS-zW-NO9" userLabel="width = 60"/>
+                                                                <constraint firstAttribute="height" constant="150" id="kfk-RC-EHA"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSa-0T-AEU" userLabel="Title Label">
-                                                            <rect key="frame" x="55" y="0.0" width="334" height="60"/>
+                                                            <rect key="frame" x="135" y="0.0" width="254" height="150"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -58,6 +58,7 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="UITableViewCell"/>
                                         <connections>
+                                            <outlet property="thumbnail" destination="JMd-aB-VBD" id="pME-A0-Tbs"/>
                                             <outlet property="titleLabel" destination="VSa-0T-AEU" id="bzf-OK-F1p"/>
                                         </connections>
                                     </tableViewCell>
@@ -74,18 +75,49 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C4B-Hl-Rd4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shows" id="n6D-Fc-15q"/>
+                    <navigationItem key="navigationItem" title="Shows" id="n6D-Fc-15q">
+                        <barButtonItem key="leftBarButtonItem" id="doc-vG-f13">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dMr-Wg-8lx">
+                                <rect key="frame" x="20" y="10" width="78" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ic-logout"/>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="DGo-Ne-ejv" eventType="touchUpInside" id="rfQ-rz-zgt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="logoutButton" destination="dMr-Wg-8lx" id="bis-Ht-dw5"/>
                         <outlet property="tableView" destination="spa-kJ-hmm" id="7wZ-7B-rf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI8-Ew-XUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4528.985507246377" y="26.785714285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VJk-zV-SCD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5S2-lo-E0P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aiN-wE-Aqj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DGo-Ne-ejv" kind="relationship" relationship="rootViewController" id="fYK-me-u1K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yeh-fa-yAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="3618.840579710145" y="26.785714285714285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic-logout" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>

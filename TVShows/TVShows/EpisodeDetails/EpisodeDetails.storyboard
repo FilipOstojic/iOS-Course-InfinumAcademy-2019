@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Episode Details View Controller-->
+        <scene sceneID="T45-4v-ZJf">
+            <objects>
+                <viewController storyboardIdentifier="EpisodeDetailsViewController" id="rrd-Eh-aPA" customClass="EpisodeDetailsViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c7f-Dd-zpS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-dN-s1g">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="img-login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="VD9-uN-vH6">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="350" id="2Lw-C1-o1E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikU-2u-BL1">
+                                        <rect key="frame" x="15" y="420" width="384" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibJ-iO-0gY" userLabel="DescrioptionLabel">
+                                        <rect key="frame" x="15" y="480" width="384" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaA-Iq-W0C" userLabel="Title Label">
+                                        <rect key="frame" x="15" y="370" width="384" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ikU-2u-BL1" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="1Vt-Qs-qZK"/>
+                                    <constraint firstAttribute="trailing" secondItem="ibJ-iO-0gY" secondAttribute="trailing" constant="15" id="3C2-nb-4MA"/>
+                                    <constraint firstAttribute="trailing" secondItem="ikU-2u-BL1" secondAttribute="trailing" constant="15" id="Dw8-tR-Ua8"/>
+                                    <constraint firstItem="HaA-Iq-W0C" firstAttribute="top" secondItem="VD9-uN-vH6" secondAttribute="bottom" constant="20" id="Ogx-iT-aXy"/>
+                                    <constraint firstItem="VD9-uN-vH6" firstAttribute="top" secondItem="tYg-dN-s1g" secondAttribute="top" id="Q2a-Je-NrL"/>
+                                    <constraint firstItem="ibJ-iO-0gY" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="RYQ-xU-0Ju"/>
+                                    <constraint firstAttribute="trailing" secondItem="VD9-uN-vH6" secondAttribute="trailing" id="V6B-fQ-L2q"/>
+                                    <constraint firstItem="VD9-uN-vH6" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" id="a6d-qI-YZs"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ibJ-iO-0gY" secondAttribute="bottom" constant="60" id="gse-EL-Z7r"/>
+                                    <constraint firstItem="ikU-2u-BL1" firstAttribute="top" secondItem="HaA-Iq-W0C" secondAttribute="bottom" constant="20" id="qMv-nJ-BAt"/>
+                                    <constraint firstItem="ibJ-iO-0gY" firstAttribute="top" secondItem="ikU-2u-BL1" secondAttribute="bottom" constant="30" id="qXO-Q7-xJa"/>
+                                    <constraint firstItem="HaA-Iq-W0C" firstAttribute="leading" secondItem="tYg-dN-s1g" secondAttribute="leading" constant="15" id="u69-QV-hhV"/>
+                                    <constraint firstAttribute="trailing" secondItem="HaA-Iq-W0C" secondAttribute="trailing" constant="15" id="xRX-jd-IZs"/>
+                                    <constraint firstItem="VD9-uN-vH6" firstAttribute="centerX" secondItem="tYg-dN-s1g" secondAttribute="centerX" id="yim-Hf-fEg"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLG-Hv-xsI" userLabel="Back Button">
+                                <rect key="frame" x="15" y="59" width="32" height="32"/>
+                                <state key="normal" image="ic-navigate-back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="rrd-Eh-aPA" eventType="touchUpInside" id="8cg-AU-h6u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-RY-P3M" userLabel="CommentButton">
+                                <rect key="frame" x="15" y="823" width="150" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Qca-yQ-dFx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Comment" image="ic-message-circle">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="commentButtonTapped:" destination="rrd-Eh-aPA" eventType="touchUpInside" id="fhn-Wh-5kF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FPb-CZ-k1V" firstAttribute="bottom" secondItem="nlX-RY-P3M" secondAttribute="bottom" constant="15" id="IsC-GK-Zzd"/>
+                            <constraint firstItem="nlX-RY-P3M" firstAttribute="leading" secondItem="FPb-CZ-k1V" secondAttribute="leading" constant="15" id="R24-nE-ggk"/>
+                            <constraint firstItem="tYg-dN-s1g" firstAttribute="bottom" secondItem="FPb-CZ-k1V" secondAttribute="bottom" id="dV3-fF-KEZ"/>
+                            <constraint firstItem="tYg-dN-s1g" firstAttribute="trailing" secondItem="FPb-CZ-k1V" secondAttribute="trailing" id="e7a-CF-RTB"/>
+                            <constraint firstItem="tYg-dN-s1g" firstAttribute="top" secondItem="c7f-Dd-zpS" secondAttribute="top" id="oPM-aJ-25l"/>
+                            <constraint firstItem="BLG-Hv-xsI" firstAttribute="top" secondItem="FPb-CZ-k1V" secondAttribute="top" constant="15" id="pz0-D9-c4U"/>
+                            <constraint firstItem="tYg-dN-s1g" firstAttribute="leading" secondItem="FPb-CZ-k1V" secondAttribute="leading" id="qhH-By-Qig"/>
+                            <constraint firstItem="BLG-Hv-xsI" firstAttribute="leading" secondItem="FPb-CZ-k1V" secondAttribute="leading" constant="15" id="vVR-O0-C2J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FPb-CZ-k1V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NWg-DW-ihz"/>
+                    <connections>
+                        <outlet property="backButton" destination="BLG-Hv-xsI" id="p2c-9a-R4w"/>
+                        <outlet property="commentButton" destination="nlX-RY-P3M" id="yKB-0o-oE6"/>
+                        <outlet property="descriptionLabel" destination="ibJ-iO-0gY" id="gtn-oz-Cms"/>
+                        <outlet property="episodeImage" destination="VD9-uN-vH6" id="MX5-hi-I1v"/>
+                        <outlet property="seasonEpisodeLabel" destination="ikU-2u-BL1" id="g8o-Xm-0tH"/>
+                        <outlet property="titleLabel" destination="HaA-Iq-W0C" id="hoo-hr-JOd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sf-HD-jU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2726.0869565217395" y="210.9375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-message-circle" width="24" height="24"/>
+        <image name="ic-navigate-back" width="32" height="32"/>
+        <image name="img-login-logo" width="75" height="80"/>
+    </resources>
+</document>

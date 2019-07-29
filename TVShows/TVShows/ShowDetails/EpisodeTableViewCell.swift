@@ -16,7 +16,7 @@ class EpisodeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -31,7 +31,7 @@ class EpisodeTableViewCell: UITableViewCell {
 extension EpisodeTableViewCell {
     
     func configure(with item: Episode) {
-        seasonEpisodeLabel.text = item.season + item.episodeNumber
+        seasonEpisodeLabel.text = "S" + item.season + " Ep" + item.episodeNumber
         episodeTitle.text = item.title
     }
 }

@@ -1,0 +1,6 @@
+framework module KWKeyboardListener {
+  umbrella header "KWKeyboardListener-umbrella.h"
+
+  export *
+  module * { export * }
+}

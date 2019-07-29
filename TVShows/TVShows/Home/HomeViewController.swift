@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logoutButton: UIButton!
     
     // MARK: - Properties
     
@@ -28,8 +30,21 @@ final class HomeViewController: UIViewController {
         getShows()
         setupTableView()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 }
 
+extension HomeViewController {
+    
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        UserDefaults.standard.setRemeberMe(value: false)
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+}
 
 // MARK: API call to get all TVShows
 
@@ -62,13 +77,13 @@ extension HomeViewController {
         tableView.dataSource = self
     }
     
-    func navigateToShowDetails(showID: String, userToken: String) {
+    func navigateToShowDetails(showID: String, userToken: String, url: String) {
         let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
         let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
         showDetailsViewController.showId = showID
         showDetailsViewController.token = userToken
+        showDetailsViewController.imageUrl = url
         self.navigationController?.pushViewController(showDetailsViewController, animated: true)
-        
     }
 }
 
@@ -80,7 +95,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let show = shows[indexPath.row]
-        navigateToShowDetails(showID: show.id, userToken: token)
+        navigateToShowDetails(showID: show.id, userToken: token, url: show.imageUrl)
     }
 }
 
