@@ -171,7 +171,6 @@ extension AddShowViewController: UIImagePickerControllerDelegate {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             uploadedImage = image
             cameraButton.setImage(image, for: .normal)
-            cameraButton.imageView?.contentMode = UIView.ContentMode.scaleToFill
         }
         dismiss(animated: true, completion: nil)
     }

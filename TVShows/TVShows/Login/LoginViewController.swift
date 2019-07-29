@@ -65,9 +65,7 @@ private extension LoginViewController {
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-//            showAlert(title: "Registration error",  message: "\nPlease enter username and password")
-            usernameTextField.shake()
-            passwordTextField.shake()
+            shakeTextFields()
             return
         }
         
@@ -80,9 +78,7 @@ private extension LoginViewController {
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-//            showAlert(title: "Login error",  message: "\nPlease enter username and password")
-            usernameTextField.shake()
-            passwordTextField.shake()
+            shakeTextFields()
             return
         }
         
@@ -116,6 +112,11 @@ private extension LoginViewController {
             return true
         }
         return false
+    }
+    
+    func shakeTextFields() {
+        usernameTextField.shake()
+        passwordTextField.shake()
     }
     
     func setLineColor(color: UIColor) {
@@ -165,7 +166,6 @@ private extension LoginViewController {
 private extension LoginViewController {
     
     func registerUserWith(email: String, password: String) {
-        SVProgressHUD.show()
         
         let parameters: [String: String] = [
             "email": email,
@@ -186,7 +186,7 @@ private extension LoginViewController {
                     self?.loginUserWith(email: email, password: password)
                 case .failure( _):
                     self?.setLineColor(color: .red)
-                    SVProgressHUD.showError(withStatus: "Failure")
+                    self?.shakeTextFields()
                 }
         }
     }
@@ -197,7 +197,6 @@ private extension LoginViewController {
 private extension LoginViewController {
 
     func loginUserWith(email: String, password: String) {
-        SVProgressHUD.show()
         
         let parameters: [String: String] = [
             "email": email,
@@ -220,7 +219,7 @@ private extension LoginViewController {
                     self?.navigateToHome()
                 case .failure( _):
                     self?.setLineColor(color: .red)
-                    SVProgressHUD.showError(withStatus: "Failure")
+                    self?.shakeTextFields()
                 }
         }
     }
