@@ -23,6 +23,10 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var usernameLine: UIView!
     @IBOutlet weak var passwordLine: UIView!
     
+    // MARK: - properties
+    
+    private var loginUser: LoginData?
+    
     // MARK: - lifecycle functions
     
     override func viewDidLoad() {
@@ -46,29 +50,33 @@ private extension LoginViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
+        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Registration error",  message: "Please enter username and password")
+            showAlert(title: "Registration error",  message: "\nPlease enter username and password")
             return
         }
         
         registerUserWith(email: username, password: password)
+        loginButton.isEnabled = true
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
+        loginButton.isEnabled = false
         guard
             let username = usernameTextField.text,
             let password = passwordTextField.text,
             !inputsAreEmpty()
         else {
-            showAlert(title: "Registration error",  message: "Please enter username and password")
+            showAlert(title: "Login error",  message: "\nPlease enter username and password")
             return
         }
         
         loginUserWith(email: username, password: password)
+        loginButton.isEnabled = true
     }
     
     @IBAction func usernameValueChanged(_ sender: UITextField) {
@@ -108,6 +116,7 @@ private extension LoginViewController {
     func navigateToHome() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        homeViewController.token = loginUser!.token
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
@@ -155,7 +164,6 @@ private extension LoginViewController {
 private extension LoginViewController {
 
     func loginUserWith(email: String, password: String) {
-        loginButton.isEnabled = false
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -172,14 +180,14 @@ private extension LoginViewController {
             .validate()
             .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (response: DataResponse<LoginData>) in
                 switch response.result {
-                case .success( _):
+                case .success(let loginToken):
                     SVProgressHUD.showSuccess(withStatus: "Success")
+                    self?.loginUser = loginToken
                     self?.navigateToHome()
                 case .failure( _):
                     self?.setLineColor(color: .red)
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
-                self?.loginButton.isEnabled = true
         }
     }
 
