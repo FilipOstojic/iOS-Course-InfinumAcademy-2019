@@ -12,8 +12,8 @@ class EpisodeDetailsViewController: UIViewController {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var episodeImage: UIImageView!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var episodeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var seasonEpisodeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -22,7 +22,7 @@ class EpisodeDetailsViewController: UIViewController {
     // MARK: - Properties
     
     var episode: Episode?
-    var token: String = ""
+    var token: String?
     
     // MARK: - LifeCycle methods
     
@@ -41,7 +41,6 @@ class EpisodeDetailsViewController: UIViewController {
 private extension EpisodeDetailsViewController {
     
     func adjustUITextViewHeight(textView : UITextView) {
-        textView.translatesAutoresizingMaskIntoConstraints = true
         textView.sizeToFit()
         textView.isScrollEnabled = false
         textView.isEditable = false

@@ -24,7 +24,6 @@ class AddShowViewController: UIViewController {
     
     var token: String = ""
     var showId: String = ""
-    let imagePickerController = UIImagePickerController()
     var uploadedImage: UIImage?
     
     // MARK: - LifeCycle methods
@@ -32,7 +31,6 @@ class AddShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setScreen()
-        configureImagePicker()
     }
 }
 
@@ -147,17 +145,16 @@ private extension AddShowViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureImagePicker() {
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-    }
 }
 
 // MARK: - IBActions
 
 private extension AddShowViewController {
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         self.present(imagePickerController, animated: true, completion: nil)
     }
 }

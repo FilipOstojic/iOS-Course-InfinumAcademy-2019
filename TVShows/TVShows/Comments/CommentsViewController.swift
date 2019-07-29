@@ -24,7 +24,7 @@ class CommentsViewController: UIViewController {
     // MARK: - Properties
     
     var comments: [Comment] = []
-    var token: String = ""
+    var token: String?
     var episodeId: String = ""
     private let refresher = UIRefreshControl()
     
@@ -114,6 +114,7 @@ extension CommentsViewController {
     }
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
+        guard let token = token else { return }
         SVProgressHUD.show()
         let headers = ["Authorization": token]
         let body: [String:String] = [ "text": inputCommentTextField.text!,
@@ -145,6 +146,8 @@ extension CommentsViewController {
 extension CommentsViewController {
     
     func fetchComments() {
+        guard let token = token else { return }
+
         SVProgressHUD.show()
         let headers = ["Authorization": token]
         
