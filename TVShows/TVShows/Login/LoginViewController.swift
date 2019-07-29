@@ -145,13 +145,12 @@ private extension LoginViewController {
     }
     
     func remeberMeNavigation() {
-        if UserDefaults.standard.getRemeberMe() {
-            usernameTextField.text = UserDefaults.standard.getUsername()
-            passwordTextField.text = UserDefaults.standard.getPassword()
-            checkButton.isSelected = UserDefaults.standard.getRemeberMe()
-            remeberMe = UserDefaults.standard.getRemeberMe()
-            loginButtonTapped(loginButton)
-        }
+        guard UserDefaults.standard.getRemeberMe() else { return }
+        usernameTextField.text = UserDefaults.standard.getUsername()
+        passwordTextField.text = UserDefaults.standard.getPassword()
+        checkButton.isSelected = UserDefaults.standard.getRemeberMe()
+        remeberMe = UserDefaults.standard.getRemeberMe()
+        loginButtonTapped(loginButton)
     }
     
     func setUserDefaults() {
