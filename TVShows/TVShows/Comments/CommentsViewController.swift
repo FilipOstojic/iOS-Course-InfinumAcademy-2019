@@ -46,14 +46,14 @@ class CommentsViewController: UIViewController {
 
 // MARK: - Private functions
 
-extension CommentsViewController {
+private extension CommentsViewController {
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    private func showEmptyState() {
+    func showEmptyState() {
         if comments.count == 0 {
             emptyStateView.isHidden = false
         } else {
@@ -61,36 +61,36 @@ extension CommentsViewController {
         }
     }
     
-    private func addKeyboardEventsHandlers() {
+    func addKeyboardEventsHandlers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func setUpRefresheControl() {
+    func setUpRefresheControl() {
         refresher.tintColor = #colorLiteral(red: 1, green: 0.4588235294, blue: 0.5490196078, alpha: 1)
         refresher.addTarget(self, action: #selector(updateTableView), for: .valueChanged)
         tableView.refreshControl = refresher
     }
     
-    private func setUpTapGesture() {
+    func setUpTapGesture() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    @objc private func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         inputBarBottomConstraint.constant = keyboardHeight - 30
         print(inputBarBottomConstraint.constant)
         print(keyboardHeight)
     }
     
-    @objc private func keyboardWillHide(notification:NSNotification) {
+    @objc func keyboardWillHide(notification:NSNotification) {
         inputBarBottomConstraint.constant = 0
         print(inputBarBottomConstraint.constant)
     }
     
-    @objc private func updateTableView() {
+    @objc func updateTableView() {
         fetchComments()
         showEmptyState()
         let delay = DispatchTime.now() + .seconds(1)
@@ -99,7 +99,7 @@ extension CommentsViewController {
         }
     }
     
-    @objc private func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     

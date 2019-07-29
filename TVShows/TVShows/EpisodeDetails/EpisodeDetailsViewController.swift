@@ -36,8 +36,9 @@ class EpisodeDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - Private methods
 
-extension EpisodeDetailsViewController {
+private extension EpisodeDetailsViewController {
     
     func adjustUITextViewHeight(textView : UITextView) {
         textView.translatesAutoresizingMaskIntoConstraints = true
@@ -60,6 +61,7 @@ extension EpisodeDetailsViewController {
     }
 }
 
+// MARK: - IBOutlets
 
 extension EpisodeDetailsViewController {
     

@@ -12,32 +12,31 @@ import Alamofire
 
 class AddShowViewController: UIViewController {
     
+    // MARK: - IBOutlets
     
     @IBOutlet weak var episodeTitleTextView: UITextField!
     @IBOutlet weak var seasonNumberTextView: UITextField!
     @IBOutlet weak var episodeNumberTextView: UITextField!
     @IBOutlet weak var episodeDescriptionTextView: UITextField!
-    @IBOutlet weak var uploadPhotoButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
     
+    // MARK: - Properties
     
     var token: String = ""
     var showId: String = ""
     let imagePickerController = UIImagePickerController()
-    var uploadedImage: UIImage! {
-        didSet {
-            uploadedImage = UIImage(named: "login-logo")
-        }
-    }
+    var uploadedImage: UIImage?
+    
+    // MARK: - LifeCycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setScreen()
         configureImagePicker()
     }
-    
 }
 
-extension AddShowViewController {
+private extension AddShowViewController {
     func setScreen() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Cancel",
@@ -94,7 +93,7 @@ extension AddShowViewController {
         uploadRequest
             .responseDecodableObject(keyPath: "data") { [weak self] (response: DataResponse<Media>) in
                 
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 
                 switch response.result {
                 case .success(let media):
@@ -149,24 +148,30 @@ extension AddShowViewController {
     }
     
     private func configureImagePicker() {
-        //imagePickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate'
+        imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
     }
 }
 
-extension AddShowViewController {
-    @IBAction func uploadButtonTapped(_ sender: UIButton) {
+// MARK: - IBActions
+
+private extension AddShowViewController {
+    @IBAction func cameraButtonTapped(_ sender: UIButton) {
         self.present(imagePickerController, animated: true, completion: nil)
     }
 }
 
+// MARK: - Picker Delegate
+
 extension AddShowViewController: UIImagePickerControllerDelegate {
-    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             uploadedImage = image
-            uploadPhotoButton.setImage(image, for: .normal)
-            uploadPhotoButton.imageView?.contentMode = UIView.ContentMode.scaleToFill
+            cameraButton.setImage(image, for: .normal)
+            cameraButton.imageView?.contentMode = UIView.ContentMode.scaleToFill
         }
         dismiss(animated: true, completion: nil)
     }
@@ -174,4 +179,10 @@ extension AddShowViewController: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+// MARK: - Delegate
+
+extension AddShowViewController: UINavigationControllerDelegate {
+    
 }
