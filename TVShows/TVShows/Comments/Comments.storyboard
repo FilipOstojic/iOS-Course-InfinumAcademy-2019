@@ -67,6 +67,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBX-LL-EtG" userLabel="EmptyStateView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="734"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-placehoder-comments" translatesAutoresizingMaskIntoConstraints="NO" id="cgT-J0-1k9">
+                                        <rect key="frame" x="199" y="359" width="16" height="16"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no comments yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihr-ez-Vrg" userLabel="MessageLabel">
+                                        <rect key="frame" x="0.0" y="395" width="414" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cgT-J0-1k9" firstAttribute="centerX" secondItem="vBX-LL-EtG" secondAttribute="centerX" id="IH2-Gc-EaT"/>
+                                    <constraint firstAttribute="trailing" secondItem="ihr-ez-Vrg" secondAttribute="trailing" id="WeT-u5-Vp5"/>
+                                    <constraint firstItem="ihr-ez-Vrg" firstAttribute="top" secondItem="cgT-J0-1k9" secondAttribute="bottom" constant="20" id="bp8-RM-Ia8"/>
+                                    <constraint firstItem="ihr-ez-Vrg" firstAttribute="centerX" secondItem="vBX-LL-EtG" secondAttribute="centerX" id="dkO-hY-5zF"/>
+                                    <constraint firstItem="ihr-ez-Vrg" firstAttribute="leading" secondItem="vBX-LL-EtG" secondAttribute="leading" id="hbY-M6-P3T"/>
+                                    <constraint firstItem="cgT-J0-1k9" firstAttribute="centerY" secondItem="vBX-LL-EtG" secondAttribute="centerY" id="sua-7s-4rA"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="z3X-6R-4B2">
                                 <rect key="frame" x="15" y="822" width="384" height="40"/>
                                 <subviews>
@@ -99,13 +122,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vBX-LL-EtG" firstAttribute="trailing" secondItem="uhM-h3-nsE" secondAttribute="trailing" id="10T-8Q-WVg"/>
                             <constraint firstItem="uhM-h3-nsE" firstAttribute="bottom" secondItem="z3X-6R-4B2" secondAttribute="bottom" id="8ym-aA-dKu"/>
+                            <constraint firstItem="z3X-6R-4B2" firstAttribute="top" secondItem="vBX-LL-EtG" secondAttribute="bottom" id="ATd-C9-Pvj"/>
                             <constraint firstItem="pVa-gn-Nfd" firstAttribute="top" secondItem="uhM-h3-nsE" secondAttribute="top" id="FFf-JL-WaR"/>
                             <constraint firstItem="z3X-6R-4B2" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" constant="15" id="aPC-VE-619"/>
                             <constraint firstItem="uhM-h3-nsE" firstAttribute="trailing" secondItem="z3X-6R-4B2" secondAttribute="trailing" constant="15" id="dh3-o6-PZ3"/>
+                            <constraint firstItem="vBX-LL-EtG" firstAttribute="top" secondItem="uhM-h3-nsE" secondAttribute="top" id="gXU-yl-sQz"/>
                             <constraint firstItem="uhM-h3-nsE" firstAttribute="bottom" secondItem="pVa-gn-Nfd" secondAttribute="bottom" id="jJ8-J1-OPd"/>
                             <constraint firstItem="uhM-h3-nsE" firstAttribute="trailing" secondItem="pVa-gn-Nfd" secondAttribute="trailing" id="qyP-J6-Eku"/>
                             <constraint firstItem="pVa-gn-Nfd" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" id="rhq-iz-rzg"/>
+                            <constraint firstItem="vBX-LL-EtG" firstAttribute="leading" secondItem="uhM-h3-nsE" secondAttribute="leading" id="wwh-E5-llt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uhM-h3-nsE"/>
                     </view>
@@ -123,6 +150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="0lN-Bj-pyq" id="22a-gu-LIA"/>
+                        <outlet property="emptyStateView" destination="vBX-LL-EtG" id="Fzw-xZ-4uj"/>
                         <outlet property="inputBarBottomConstraint" destination="8ym-aA-dKu" id="dka-nA-EmB"/>
                         <outlet property="inputCommentTextField" destination="4GE-ls-zPm" id="TES-dG-vJf"/>
                         <outlet property="postButton" destination="ivo-ln-qCe" id="Xql-47-q8O"/>
@@ -154,6 +182,7 @@
     </scenes>
     <resources>
         <image name="ic-navigate-back" width="32" height="32"/>
+        <image name="img-placehoder-comments" width="107" height="102"/>
         <image name="img-placeholder-user1" width="48" height="48"/>
     </resources>
 </document>

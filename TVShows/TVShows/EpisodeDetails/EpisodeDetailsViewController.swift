@@ -9,6 +9,8 @@
 import UIKit
 
 class EpisodeDetailsViewController: UIViewController {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var episodeImage: UIImageView!
@@ -17,10 +19,12 @@ class EpisodeDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     
+    // MARK: - Properties
     
     var episode: Episode?
     var token: String = ""
     
+    // MARK: - LifeCycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()

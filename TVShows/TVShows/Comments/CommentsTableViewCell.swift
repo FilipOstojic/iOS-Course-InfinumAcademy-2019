@@ -10,10 +10,13 @@ import UIKit
 
 class CommentsTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var commentTextLabel: UILabel!
+    
+    // MARK: - LifeCycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +33,8 @@ class CommentsTableViewCell: UITableViewCell {
         commentTextLabel.text = ""
     }
 }
+
+// MARK: - Cell configuration
 
 extension CommentsTableViewCell {
     

@@ -19,6 +19,7 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var inputCommentTextField: UITextField!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var inputBarBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var emptyStateView: UIView!
     
     // MARK: - Properties
     
@@ -27,11 +28,12 @@ class CommentsViewController: UIViewController {
     var episodeId: String = ""
     private let refresher = UIRefreshControl()
     
+    // MARK: - LifeCycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchComments()
         setupTableView()
-//        showEmptyState()
         addKeyboardEventsHandlers()
         setUpRefresheControl()
         setUpTapGesture()
@@ -40,19 +42,24 @@ class CommentsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+}
+
+// MARK: - Private functions
+
+extension CommentsViewController {
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-//    func showEmptyState() {
-//        if comments.count == 0 {
-//            let imageView = UIImageView()
-//            imageView.image = UIImage(named: "img-placeholder-comments")
-//            tableView.backgroundView = imageView
-//        }
-//    }
+    private func showEmptyState() {
+        if comments.count == 0 {
+            emptyStateView.isHidden = false
+        } else {
+            emptyStateView.isHidden = true
+        }
+    }
     
     private func addKeyboardEventsHandlers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -71,20 +78,21 @@ class CommentsViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         inputBarBottomConstraint.constant = keyboardHeight - 30
         print(inputBarBottomConstraint.constant)
         print(keyboardHeight)
     }
     
-    @objc func keyboardWillHide(notification:NSNotification) {
+    @objc private func keyboardWillHide(notification:NSNotification) {
         inputBarBottomConstraint.constant = 0
         print(inputBarBottomConstraint.constant)
     }
     
-    @objc func updateTableView() {
+    @objc private func updateTableView() {
         fetchComments()
+        showEmptyState()
         let delay = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
             self?.refresher.endRefreshing()
@@ -96,6 +104,8 @@ class CommentsViewController: UIViewController {
     }
     
 }
+
+// MARK: - IBActions
 
 extension CommentsViewController {
     
@@ -128,8 +138,9 @@ extension CommentsViewController {
                 }
         }
     }
-    
 }
+
+// MARK: - API calls
 
 extension CommentsViewController {
     
@@ -149,6 +160,7 @@ extension CommentsViewController {
                     SVProgressHUD.dismiss()
                     self?.comments = commentsResponse
                     self?.tableView.reloadData()
+                    self?.showEmptyState()
                 case .failure( _):
                     SVProgressHUD.showError(withStatus: "Failure")
                 }
